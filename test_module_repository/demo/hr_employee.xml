@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2017 - Today: GRAP (http://www.grap.coop)
+@author Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+
+<odoo>
+
+    <record id="my_new_employee" model="hr.employee">
+        <field name="name">My New Employee</field>
+        <field name="new_field">New Value</field>
+    </record>
+
+    <record id="hr.employee_hne" model="hr.employee">
+        <field name="new_field">Other Value on existing employee</field>
+    </record>
+
+</odoo>

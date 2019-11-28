@@ -7,7 +7,7 @@
     "version": "12.0.1.0.0",
     "category": "Test",
     "author": "GRAP",
-    "summary": "This is a demo module to test new repositories",
+    "summary": "This is a demo module to test new repositories  ",
     "depends": ["hr"],
     "license": "AGPL-3",
     "data": ["views/view_hr_employee.xml"],

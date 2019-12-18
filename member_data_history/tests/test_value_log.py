@@ -64,9 +64,35 @@ class TestValueLog(tests.common.TransactionCase):
                 ("model", "=", "res.partner"),
                 ("field", "=", "zip"),
                 ("previous_value", "=", str(old_zip)),
-                ("previous_value", "=", str(old_zip)),
                 ("new_value", "=", "4100"),
             ]
         )
+        self.assertTrue(log)
 
+    def test_log_employee_adresses(self):
+        employee = self.browse_ref("hr.employee_hne")
+        partner = self.browse_ref("base.res_partner_1")
+        employee.address_home_id = partner
+        employee.address_id = partner
+
+        new_partner = "({}, {})".format(partner.id, partner.name)
+
+        log = self.env["value.log"].search(
+            [
+                ("model", "=", "hr.employee"),
+                ("field", "=", "address_home_id"),
+                ("previous_value", "=", False),
+                ("new_value", "=", new_partner),
+            ]
+        )
+        self.assertTrue(log)
+
+        log = self.env["value.log"].search(
+            [
+                ("model", "=", "hr.employee"),
+                ("field", "=", "address_id"),
+                ("previous_value", "=", False),
+                ("new_value", "=", new_partner),
+            ]
+        )
         self.assertTrue(log)

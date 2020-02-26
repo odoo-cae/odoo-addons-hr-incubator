@@ -17,7 +17,6 @@
         "hr_cae_documents",
         "hr_cae_event",
         "hr_employee_firstname",
-        "hr_recruitment",
     ],
     "data": ["views/hr_applicant.xml"],
     "demo": [],

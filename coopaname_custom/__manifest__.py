@@ -19,6 +19,7 @@
         "hr_cae_event_promotion",
         "hr_cae_promotion",
         "hr_employee_firstname",
+        "member_data_history",
     ],
     "data": ["views/hr_applicant.xml"],
     "demo": [],

@@ -16,6 +16,8 @@
         "hr_cae_contract",
         "hr_cae_documents",
         "hr_cae_event",
+        "hr_cae_event_promotion",
+        "hr_cae_promotion",
         "hr_employee_firstname",
     ],
     "data": ["views/hr_applicant.xml"],

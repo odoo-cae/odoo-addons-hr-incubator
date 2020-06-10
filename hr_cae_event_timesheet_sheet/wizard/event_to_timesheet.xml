@@ -7,7 +7,11 @@
             <form>
                 <p>Generate Timesheet sheets for participants of this event.</p>
                 <field name="timesheet_sheet_created" invisible="True"/>
-                <p attrs="{'invisible': [('timesheet_sheet_created', '=', False)]}"><b>Warning! Timesheet sheets for this event have already been created via this wizard.</b></p>
+                <div class="card bg-warning mb8" attrs="{'invisible': [('timesheet_sheet_created', '=', False)]}">
+                    <div class="card-body bg-warning">
+                        <i class="fa fa-warning"/> Timesheet sheets for this event have already been created via this wizard.
+                    </div>
+                </div>
                 <group>
                     <group>
                         <field name="name"/>

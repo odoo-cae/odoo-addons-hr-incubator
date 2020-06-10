@@ -12,6 +12,7 @@ class TestEvent(tests.common.TransactionCase):
         admin_user = self.browse_ref("base.user_admin")
         partner_1 = self.browse_ref("base.res_partner_1")
         partner_2 = self.browse_ref("base.res_partner_2")
+        partner_3 = self.browse_ref("base.res_partner_3")
         employee = self.browse_ref("hr.employee_al")
         account = self.browse_ref("analytic.analytic_rd_department")
         project = self.browse_ref("project.project_project_2")
@@ -21,6 +22,9 @@ class TestEvent(tests.common.TransactionCase):
         )
         self.assertFalse(
             self.env["res.users"].search([("login", "=", partner_2.email)])
+        )
+        self.assertFalse(
+            self.env["res.users"].search([("login", "=", partner_3.email)])
         )
         self.assertFalse(
             self.env["res.users"].search([("login", "=", employee.work_email)])
@@ -41,6 +45,13 @@ class TestEvent(tests.common.TransactionCase):
                 "email": partner_2.email,
             }
         )
+        partner_3_user = self.env["res.users"].create(
+            {
+                "name": partner_3.name,
+                "login": partner_3.email,
+                "email": partner_3.email,
+            }
+        )
         employee_user = self.env["res.users"].create(
             {
                 "name": employee.name,
@@ -55,6 +66,7 @@ class TestEvent(tests.common.TransactionCase):
                 "name": partner_1.name,
                 "email": partner_1.email,
                 "partner_id": partner_1.id,
+                "state": "done",
             }
         )
         self.env["event.registration"].create(
@@ -62,6 +74,15 @@ class TestEvent(tests.common.TransactionCase):
                 "event_id": event.id,
                 "name": partner_2.name,
                 "email": partner_2.email,
+                "state": "done",
+            }
+        )
+        self.env["event.registration"].create(
+            {
+                "event_id": event.id,
+                "name": partner_3.name,
+                "email": partner_3.email,
+                "state": "open",  # tests that state 'done' is required
             }
         )
         self.env["event.registration"].create(
@@ -70,6 +91,7 @@ class TestEvent(tests.common.TransactionCase):
                 "name": employee.name,
                 "email": employee.work_email,
                 "employee_id": employee.id,
+                "state": "done",
             }
         )
 
@@ -82,6 +104,7 @@ class TestEvent(tests.common.TransactionCase):
         self.assertTrue(admin_user in wizard.user_ids)
         self.assertTrue(partner_1_user in wizard.user_ids)
         self.assertTrue(partner_2_user in wizard.user_ids)
+        self.assertFalse(partner_3_user in wizard.user_ids)
         self.assertTrue(employee_user in wizard.user_ids)
 
         wizard.create_timesheet_sheets()

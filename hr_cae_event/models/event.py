@@ -46,3 +46,21 @@ class Event(models.Model):
             self.description = self.event_type_id.description
 
         return res
+
+
+class EventRegistration(models.Model):
+    _inherit = "event.registration"
+
+    employee_id = fields.Many2one(
+        comodel_name="hr.employee", string="Employee", required=False
+    )
+
+    @api.onchange("employee_id")
+    def _onchange_employee_id(self):
+        if self.employee_id:
+            # We could also set self.partner_id here using
+            # self.employee_id.address_home_id
+            # And add an onchange for partner_id, setting the employe_id
+            self.name = self.employee_id.name or self.name
+            self.email = self.employee_id.work_email or self.email
+            self.phone = self.employee_id.work_phone or self.phone

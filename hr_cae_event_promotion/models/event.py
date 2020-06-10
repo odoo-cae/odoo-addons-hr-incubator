@@ -9,9 +9,6 @@ from odoo.exceptions import ValidationError
 class EventRegistration(models.Model):
     _inherit = "event.registration"
 
-    employee_id = fields.Many2one(
-        comodel_name="hr.employee", string="Employee", required=False
-    )
     promotion_id = fields.Many2one(
         comodel_name="hr.promotion",
         string="Promotion",

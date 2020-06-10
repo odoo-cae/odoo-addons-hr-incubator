@@ -24,7 +24,6 @@
         <field name="inherit_id" ref="event.view_event_registration_form"/>
         <field name="arch" type="xml">
             <field name="partner_id" position="after">
-                <field name="employee_id" attrs="{'readonly':[('state', '!=', 'draft')]}"/>
                 <field name="promotion_id"/>
             </field>
         </field>
@@ -36,7 +35,6 @@
         <field name="inherit_id" ref="event.view_event_registration_tree"/>
         <field name="arch" type="xml">
             <field name="partner_id" position="after">
-                <field name="employee_id"/>
                 <field name="promotion_id"/>
             </field>
         </field>
@@ -48,7 +46,6 @@
         <field name="inherit_id" ref="event.view_registration_search"/>
         <field name="arch" type="xml">
             <field name="partner_id" position="after">
-                <field name="employee_id"/>
                 <field name="promotion_id"/>
             </field>
         </field>

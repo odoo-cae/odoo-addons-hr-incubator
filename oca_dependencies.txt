@@ -5,3 +5,4 @@ bank-payment
 hr
 event
 l10n-france
+timesheet

@@ -58,9 +58,27 @@ class EventRegistration(models.Model):
     @api.onchange("employee_id")
     def _onchange_employee_id(self):
         if self.employee_id:
-            # We could also set self.partner_id here using
-            # self.employee_id.address_home_id
-            # And add an onchange for partner_id, setting the employe_id
             self.name = self.employee_id.name or self.name
             self.email = self.employee_id.work_email or self.email
             self.phone = self.employee_id.work_phone or self.phone
+            self.partner_id = self.employee_id.address_home_id or False
+            # Note that the partner is overwritten with False if not found,
+            # to prevent inconsistency between partner and employee
+
+    @api.onchange("partner_id")
+    def _onchange_partner_id(self):
+        if self.partner_id:
+            contact_id = self.partner_id.address_get().get("contact", False)
+            if contact_id:
+                contact = self.env["res.partner"].browse(contact_id)
+                employees = self.env["hr.employee"].search(
+                    [("address_home_id", "=", contact.id)]
+                )
+                if employees:
+                    self.employee_id = employees[0] or False
+                else:
+                    self.employee_id = False
+            else:
+                self.employee_id = False
+                # Note that the employee is overwritten with False if not found,
+                # to prevent inconsistency between partner and employee

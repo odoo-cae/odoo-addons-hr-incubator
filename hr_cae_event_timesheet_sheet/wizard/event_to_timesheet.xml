@@ -23,7 +23,7 @@
                     </group>
                     <group>
                         <field name="user_ids" widget="many2many_tags"/>
-                        <p>Timesheet lines are linked to users. The above suggested users are found via the employees, contacts or email addresses in the event's 'attended' registrations, as well as via the event organiser.</p>
+                        <p>Timesheet lines are linked to users. The above suggested users are found via the employees, contacts or email addresses in the event's <b>'attended'</b> registrations, as well as via the event organiser.</p>
                     </group>
                 </group>
                 <footer>

@@ -14,7 +14,6 @@
                 <button name="%(event_to_timesheet_wizard_view_action)d"
                         string="Create Timesheet Lines"
                         type="action"
-                        attrs="{'invisible': ['|', ('seats_expected', '=', 0), ('state', '!=', 'done')]}"
                         class="oe_read_only"/>
             </field>
 

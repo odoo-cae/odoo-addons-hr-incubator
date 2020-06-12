@@ -5,11 +5,11 @@
         <field name="model">hr.cae.event.to.timesheet.wizard</field>
         <field name="arch" type="xml">
             <form>
-                <p>Generate Timesheet sheets for participants of this event.</p>
+                <p>Generate Timesheet lines for participants of this event.</p>
                 <field name="timesheet_sheet_created" invisible="True"/>
                 <div class="card bg-warning mb8" attrs="{'invisible': [('timesheet_sheet_created', '=', False)]}">
                     <div class="card-body bg-warning">
-                        <i class="fa fa-warning"/> Timesheet sheets for this event have already been created via this wizard.
+                        <i class="fa fa-warning"/> Timesheet lines for this event have already been created via this wizard.
                     </div>
                 </div>
                 <group>
@@ -23,13 +23,13 @@
                     </group>
                     <group>
                         <field name="user_ids" widget="many2many_tags"/>
-                        <p>Timesheet sheets are linked to users. The above suggested users are found via the employees, contacts or email addresses in the event's 'attended' registrations, as well as via the event organiser.</p>
+                        <p>Timesheet lines are linked to users. The above suggested users are found via the employees, contacts or email addresses in the event's 'attended' registrations, as well as via the event organiser.</p>
                     </group>
                 </group>
                 <footer>
                     <button type="object"
-                    name="create_timesheet_sheets"
-                    string="Create Timesheet Sheets"
+                    name="create_account_analytic_line"
+                    string="Create Timesheet Lines"
                     class="oe_highlight"/>
                     <button special="cancel"
                     string="Cancel"

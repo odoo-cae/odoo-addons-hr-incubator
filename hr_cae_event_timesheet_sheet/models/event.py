@@ -9,5 +9,5 @@ class Event(models.Model):
     _inherit = "event.event"
 
     timesheet_sheet_created = fields.Boolean(
-        string="Timesheet Sheets created before."
+        string="Timesheet Sheets already created before."
     )

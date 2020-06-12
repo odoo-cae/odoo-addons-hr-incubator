@@ -60,7 +60,7 @@ class EventToTimesheet(models.TransientModel):
         return defaults
 
     @api.multi
-    def create_timesheet_sheets(self):
+    def create_account_analytic_line(self):
         self.ensure_one()
 
         for user in self.user_ids:

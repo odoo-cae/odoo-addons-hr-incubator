@@ -55,6 +55,9 @@
             <field name="partner_id" position="after">
                 <field name="employee_id" attrs="{'readonly':[('state', '!=', 'draft')]}"/>
             </field>
+            <field name="attendee_partner_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
         </field>
     </record>
 
@@ -65,6 +68,9 @@
         <field name="arch" type="xml">
             <field name="partner_id" position="after">
                 <field name="employee_id"/>
+            </field>
+            <field name="attendee_partner_id" position="attributes">
+                <attribute name="invisible">1</attribute>
             </field>
         </field>
     </record>

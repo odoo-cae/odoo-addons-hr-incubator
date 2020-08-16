@@ -26,7 +26,8 @@ class GrapPeople(models.Model):
     @api.multi
     def action_get_created_employee(self):
         self.ensure_one()
-        action = self.env['ir.actions.act_window'].for_xml_id('hr', 'open_view_employee_list')
+        action = self.env['ir.actions.act_window'].for_xml_id(
+            'hr', 'open_view_employee_list')
         action['res_id'] = self.mapped('emp_id').ids[0]
         return action
 
@@ -50,10 +51,14 @@ class GrapPeople(models.Model):
             })
             address_id = partner_adress_id.address_get(['contact'])['contact']
 
+            if coop_people.activity_ids[0:]:
+                worker_activity = coop_people.activity_ids[0].activity_id.id
+            else:
+                worker_activity = False
             employee = self.env['hr.employee'].create({
                 'name': coop_people.name,
                 'image': coop_people.image,
-                'worker_activity': coop_people.activity_ids[0].activity_id.id if coop_people.activity_ids[0:] else False,
+                'worker_activity': worker_activity,
                 'address_home_id': address_id,
                 'work_email': coop_people.working_email,
                 'work_phone': coop_people.working_phone,

@@ -9,7 +9,8 @@ class GrapPeople(models.Model):
     _inherit = "grap.people"
     _description = "GRAP Peoples"
 
-    emp_id = fields.Many2one('hr.employee',
+    emp_id = fields.Many2one(
+        comodel_name='hr.employee',
         string="Employee",
         help="Employee linked to the coop people.")
 
@@ -52,7 +53,7 @@ class GrapPeople(models.Model):
             employee = self.env['hr.employee'].create({
                 'name': coop_people.name,
                 'image': coop_people.image,
-                'worker_activity': coop_people.activity_ids[0].activity_id.id if coop_people.activity_ids[0:] else   False,
+                'worker_activity': coop_people.activity_ids[0].activity_id.id if coop_people.activity_ids[0:] else False,
                 'address_home_id': address_id,
                 'work_email': coop_people.working_email,
                 'work_phone': coop_people.working_phone,

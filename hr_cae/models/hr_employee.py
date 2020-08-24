@@ -47,7 +47,7 @@ class Employee(models.Model):
     medic_dispense_date = fields.Date(
         string="Date of Medical Dispense", required=False
     )
-    transport_mode_id = fields.Many2one(
+    transport_mode_id = fields.Many2many(
         "hr.transport.mode", string="Transport Mode", required=False
     )
     invalidity_rate = fields.Float(

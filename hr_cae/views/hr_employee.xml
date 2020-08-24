@@ -94,7 +94,7 @@
                             <field name="medic_dispense_date"/>
                         </group>
                         <group name="transportation" string="Transportation">
-                            <field name="transport_mode_id"/>
+                            <field name="transport_mode_id" widget="many2many_tags"/>
                         </group>
                         <group name="work_accomodation" string="Work Accomodation">
                             <field name="invalidity_rate"/>

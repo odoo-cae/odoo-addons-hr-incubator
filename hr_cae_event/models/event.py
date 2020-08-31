@@ -28,6 +28,7 @@ class Event(models.Model):
         store=True,
         help="hours",
     )
+    co_organizer_id = fields.Many2one("res.partner", string="Co-Organizer")
 
     @api.depends("date_begin", "date_end")
     @api.multi

@@ -14,3 +14,5 @@ class EventRegistration(models.Model):
     duration = fields.Float(
         string="Duration", related="event_id.duration", store=True
     )
+    is_organizer = fields.Boolean(string="Is Organizer", required=False)
+    is_co_organizer = fields.Boolean(string="Is Co-Organizer", required=False)

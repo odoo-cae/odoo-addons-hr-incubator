@@ -9,6 +9,15 @@
         <field name="model">event.event</field>
         <field name="inherit_id" ref="event.view_event_form"/>
         <field name="arch" type="xml">
+            <xpath expr="//field[@name='twitter_hashtag']/.." position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//label[@for='twitter_hashtag']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <field name="date_tz" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
             <field name="state" position="before">
                 <button string="Create User For All Participants" name="button_create_user_for_all_participants" type="object" groups="base.group_user" attrs="{'invisible': [('show_button_create_user_for_all_participants', '=', False)]}"/>
                 <field name="show_button_create_user_for_all_participants" invisible="1"/>

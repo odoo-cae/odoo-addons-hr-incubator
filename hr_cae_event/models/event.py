@@ -23,7 +23,10 @@ class Event(models.Model):
 
     department_id = fields.Many2one("hr.department", string="Department")
     duration = fields.Float(
-        string="Duration", compute="_compute_duration", help="hours"
+        string="Duration",
+        compute="_compute_duration",
+        store=True,
+        help="hours",
     )
 
     @api.depends("date_begin", "date_end")

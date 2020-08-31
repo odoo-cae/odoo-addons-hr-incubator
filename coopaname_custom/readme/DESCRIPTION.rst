@@ -8,5 +8,6 @@ Customization specific to Coopaname use case.
 * Copies the name from an applicant's `partner_id` to `name` and `partner_name`
 * Hides applicant name from form view
 * Formats employee's mobile and work phone
+* add category and duration to registration pivot views
 
 Also includes list of modules for Coopaname's deployement.

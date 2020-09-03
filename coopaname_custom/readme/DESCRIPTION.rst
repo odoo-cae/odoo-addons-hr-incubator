@@ -10,5 +10,6 @@ Customization specific to Coopaname use case.
 * Formats employee's mobile and work phone
 * add category and duration to registration pivot views
 * event's organizer and co-organizer are added to attendees
+* event attendance per partner report
 
 Also includes list of modules for Coopaname's deployement.

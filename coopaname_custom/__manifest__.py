@@ -33,6 +33,7 @@
         "views/hr_applicant.xml",
         "views/hr_employee.xml",
         "views/res_partner.xml",
+        "views/event_registration.xml",
     ],
     "demo": [],
     "external_dependencies": {"python": ["phonenumbers"]},

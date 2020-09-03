@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2020 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <record model="ir.ui.view" id="view_event_attendance_pivot">
+        <field name="name">event.registration.attendance</field>
+        <field name="model">event.registration</field>
+        <field name="arch" type="xml">
+            <pivot string="Registration">
+                <field name="partner_id" type="row"/>
+                <field name="duration" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_attendance">
+        <field name="name">Attendance</field>
+        <field name="res_model">event.registration</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">pivot,graph,tree,form</field>
+        <field name="view_id" ref="view_event_attendance_pivot"/>
+        <field name="context">{}</field>
+        <field name="search_view_id" ref="event.view_registration_search"/>
+    </record>
+
+    <menuitem name="Attendance"
+              id="menu_action_attendance"
+              parent="event.menu_reporting_events"
+              sequence="5"
+              action="action_attendance"
+              groups="event.group_event_user"/>
+
+    <record model="ir.actions.act_window" id="event.action_registration">
+        <field name="name">Registrations</field>
+        <field name="view_id" ref="event.view_event_registration_pivot"/>
+    </record>
+
+    <menuitem name="Registrations"
+              id="event.menu_action_registration"
+              parent="event.menu_reporting_events"
+              sequence="4"
+              action="event.action_registration"
+              groups="event.group_event_manager"/>
+
+</odoo>

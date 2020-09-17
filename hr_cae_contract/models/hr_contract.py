@@ -128,7 +128,6 @@ class Contract(models.Model):
         ],
         default="main",
         string="Contract Type Echelon",
-        readonly=True,
         copy=False,
     )  # Todo: add translation "Échelon du Type de Contrat"
     type_id = fields.Many2one(
@@ -176,7 +175,6 @@ class Contract(models.Model):
         help="'O' for main contract, '1' for it's first amendment, etc.",
         default=0,
         required=True,
-        readonly=True,
     )
     contract_group_id = fields.Many2one(
         comodel_name="hr.contract.group", string="Contract Group"

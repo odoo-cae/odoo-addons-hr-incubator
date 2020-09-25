@@ -326,6 +326,11 @@ msgid "Mailing Date"
 msgstr "Date d'envoi"
 
 #. module: hr_cae_contract
+#: model:ir.model.fields,field_description:hr_cae_contract.field_hr_contract__date_effective_end
+msgid "Effective End Date"
+msgstr "Date de fin Effective"
+
+#. module: hr_cae_contract
 #: model:ir.model.fields,help:hr_cae_contract.field_hr_contract__date_mailing
 msgid "Mailing date of the contract."
 msgstr "Date d'envoi du contrat"
@@ -425,6 +430,11 @@ msgstr "Affaires sociales"
 #: model:ir.model.fields,help:hr_cae_contract.field_hr_contract__date_initial_start
 msgid "Start date of the initial contract."
 msgstr "Date de début du contrat initial."
+
+#. module: hr_cae_contract
+#: model:ir.model.fields,help:hr_cae_contract.field_hr_contract__date_effective_end
+msgid "This can be a different date then the foreseen end date."
+msgstr "Ceci peut être une autre date que la date de fin prévu."
 
 #. module: hr_cae_contract
 #: model:ir.model.fields,field_description:hr_cae_contract.field_hr_contract__state

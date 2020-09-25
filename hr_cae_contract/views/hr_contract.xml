@@ -60,6 +60,10 @@
                 </div>
             </field>
 
+            <field name="trial_date_end" position="before">
+                <field name="date_effective_end"/>
+            </field>
+
             <field name="trial_date_end" position="after">
                 <field name="date_signature"/>
                 <field name="date_mailing"/>

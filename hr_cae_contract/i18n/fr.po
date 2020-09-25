@@ -328,7 +328,7 @@ msgstr "Date d'envoi"
 #. module: hr_cae_contract
 #: model:ir.model.fields,field_description:hr_cae_contract.field_hr_contract__date_effective_end
 msgid "Effective End Date"
-msgstr "Date de fin Effective"
+msgstr "Date effective de fin"
 
 #. module: hr_cae_contract
 #: model:ir.model.fields,help:hr_cae_contract.field_hr_contract__date_mailing

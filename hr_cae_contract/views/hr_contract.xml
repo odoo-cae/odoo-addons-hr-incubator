@@ -43,7 +43,7 @@
 
             <field name="type_id" position="before">
                 <div style="width:35%"/> <!--Managing label width-->
-                <field name="echelon"/>
+                <field name="echelon" readonly="True"/>
             </field>
 
             <field name="type_id" position="after">
@@ -114,8 +114,8 @@
         <field name="arch" type="xml">
 
             <field name="type_id" position="before">
-                <field name="amendment_index"/>
-                <field name="echelon"/>
+                <field name="amendment_index" readonly="True"/>
+                <field name="echelon" readonly="True"/>
             </field>
 
             <field name="resource_calendar_id" position="attributes">
@@ -135,8 +135,8 @@
         <field name="model">hr.contract</field>
         <field name="arch" type="xml">
             <tree decoration-muted="state=='termination'" default_order="amendment_index desc">
-                <field name="amendment_index"/>
-                <field name="echelon"/>
+                <field name="amendment_index" readonly="True"/>
+                <field name="echelon" readonly="True"/>
                 <field name="type_id"/>
                 <field name="wage"/>
                 <field name="hours"/>

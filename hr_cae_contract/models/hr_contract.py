@@ -79,15 +79,15 @@ class ContractType(models.Model):
     @api.multi
     @api.depends("echelon")
     def _compute_color(self):
-        for type in self:
-            if type.echelon == "main":
-                type.color = 7  # Dark blue
-            elif type.echelon == "amendment":
-                type.color = 4  # Light blue
-            elif type.echelon == "termination":
-                type.color = 1  # Orange
+        for contract_type in self:
+            if contract_type.echelon == "main":
+                contract_type.color = 7  # Dark blue
+            elif contract_type.echelon == "amendment":
+                contract_type.color = 4  # Light blue
+            elif contract_type.echelon == "termination":
+                contract_type.color = 1  # Orange
             else:
-                type.color = 0  # White
+                contract_type.color = 0  # White
 
 
 class ContractTag(models.Model):
@@ -128,7 +128,6 @@ class Contract(models.Model):
         ],
         default="main",
         string="Contract Type Echelon",
-        readonly=True,
         copy=False,
     )  # Todo: add translation "Échelon du Type de Contrat"
     type_id = fields.Many2one(
@@ -176,7 +175,6 @@ class Contract(models.Model):
         help="'O' for main contract, '1' for it's first amendment, etc.",
         default=0,
         required=True,
-        readonly=True,
     )
     contract_group_id = fields.Many2one(
         comodel_name="hr.contract.group", string="Contract Group"

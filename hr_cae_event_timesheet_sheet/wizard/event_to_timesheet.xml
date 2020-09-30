@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="event_to_timesheet_wizard_view_view" model="ir.ui.view">
+        <field name="name">Event to Timesheet Wizard</field>
+        <field name="model">hr.cae.event.to.timesheet.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <p>Generate Timesheet lines for participants of this event.</p>
+                <field name="timesheet_sheet_created" invisible="True"/>
+                <div class="card bg-warning mb8" attrs="{'invisible': [('timesheet_sheet_created', '=', False)]}">
+                    <div class="card-body bg-warning">
+                        <i class="fa fa-warning"/> Timesheet lines for this event have already been created via this wizard.
+                    </div>
+                </div>
+                <group>
+                    <group>
+                        <field name="name"/>
+                        <field name="date"/>
+                        <field name="account_id"/>
+                        <field name="project_id" required="1"/>
+                        <field name="task_id" context="{'default_project_id': project_id}" domain="[('project_id', '=', project_id)]"/>
+                        <field name="duration" widget="timesheet_uom"/>
+                    </group>
+                    <group>
+                        <field name="user_ids" widget="many2many_tags"/>
+                        <p>Timesheet lines are linked to users. The above suggested users are found via the employees, contacts or email addresses in the event's <b>'attended'</b> registrations, as well as via the event organiser.</p>
+                    </group>
+                </group>
+                <footer>
+                    <button type="object"
+                    name="create_account_analytic_line"
+                    string="Create Timesheet Lines"
+                    class="oe_highlight"/>
+                    <button special="cancel"
+                    string="Cancel"
+                    class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="event_to_timesheet_wizard_view_action" model="ir.actions.act_window">
+        <field name="name">Event to Timesheet Wizard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.cae.event.to.timesheet.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

@@ -149,6 +149,11 @@ class Contract(models.Model):
         help="Start date of the initial contract.",
         related="parent_contract_id.date_start",
     )
+    date_effective_end = fields.Date(
+        string="Effective End Date",
+        help="This can be a different date then the foreseen end date.",
+        copy=False,
+    )
     date_signature = fields.Date(
         string="Signature Date",
         help="Signature date of the contract.",

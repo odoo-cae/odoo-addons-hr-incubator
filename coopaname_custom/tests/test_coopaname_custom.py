@@ -2,6 +2,9 @@
 #   Robin Keunen <robin@coopiteasy.be>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
+from datetime import timedelta
+
+from odoo.fields import Date
 from odoo.tests import Form
 from odoo.tests.common import TransactionCase
 
@@ -108,3 +111,104 @@ class TestCoopanameCustom(TransactionCase):
         )
         self.assertTrue(employee.address_home_id)
         self.assertEqual(employee.address_home_id.email, employee.work_email)
+
+    def test_sync_organizer_registrations(self):
+        partner_1 = self.browse_ref("base.res_partner_1")
+        partner_2 = self.browse_ref("base.res_partner_2")
+
+        event = self.env["event.event"].create(
+            {
+                "name": "test event",
+                "date_begin": Date.today() + timedelta(days=1),
+                "date_end": Date.today() + timedelta(days=2),
+                "organizer_id": partner_1.id,
+            }
+        )
+        organizer_registration = event.registration_ids.filtered(
+            lambda r: r.partner_id == event.organizer_id
+        )
+        self.assertTrue(
+            organizer_registration, "Organizer registration was not created"
+        )
+        self.assertEquals(partner_1, organizer_registration.partner_id)
+        self.assertEquals(organizer_registration.state, "open")
+        self.assertTrue(organizer_registration.is_organizer)
+
+        event.organizer_id = partner_2
+
+        # first registration is cancelled
+        old_organizer_registration = event.registration_ids.filtered(
+            lambda r: r.partner_id == partner_1
+        )
+        self.assertEquals(old_organizer_registration.state, "cancel")
+        self.assertFalse(old_organizer_registration.is_organizer)
+
+        # new registration is created
+        new_organizer_registration = event.registration_ids.filtered(
+            lambda r: r.partner_id == partner_2
+        )
+        self.assertTrue(
+            new_organizer_registration,
+            "New Organizer registration was not created",
+        )
+        self.assertEquals(new_organizer_registration.state, "open")
+        self.assertTrue(new_organizer_registration.is_organizer)
+
+        # first registration is used
+        event.organizer_id = partner_1
+        last_organizer_registration = event.registration_ids.filtered(
+            lambda r: r.partner_id == event.organizer_id
+        )
+        self.assertEquals(last_organizer_registration, organizer_registration)
+
+    def test_sync_co_organizer_registrations(self):
+        partner_1 = self.browse_ref("base.res_partner_1")
+        partner_2 = self.browse_ref("base.res_partner_2")
+
+        event = self.env["event.event"].create(
+            {
+                "name": "test event",
+                "date_begin": Date.today() + timedelta(days=1),
+                "date_end": Date.today() + timedelta(days=2),
+                "co_organizer_id": partner_1.id,
+            }
+        )
+        co_organizer_registration = event.registration_ids.filtered(
+            lambda r: r.partner_id == event.co_organizer_id
+        )
+        self.assertTrue(
+            co_organizer_registration,
+            "co_organizer registration was not created",
+        )
+        self.assertEquals(partner_1, co_organizer_registration.partner_id)
+        self.assertEquals(co_organizer_registration.state, "open")
+        self.assertTrue(co_organizer_registration.is_co_organizer)
+
+        event.co_organizer_id = partner_2
+
+        # first registration is cancelled
+        old_co_organizer_registration = event.registration_ids.filtered(
+            lambda r: r.partner_id == partner_1
+        )
+        self.assertEquals(old_co_organizer_registration.state, "cancel")
+        self.assertFalse(old_co_organizer_registration.is_co_organizer)
+
+        # new registration is created
+        new_co_organizer_registration = event.registration_ids.filtered(
+            lambda r: r.partner_id == partner_2
+        )
+        self.assertTrue(
+            new_co_organizer_registration,
+            "New co_organizer registration was not created",
+        )
+        self.assertEquals(new_co_organizer_registration.state, "open")
+        self.assertTrue(new_co_organizer_registration.is_co_organizer)
+
+        # first registration is used
+        event.co_organizer_id = partner_1
+        last_co_organizer_registration = event.registration_ids.filtered(
+            lambda r: r.partner_id == event.co_organizer_id
+        )
+        self.assertEquals(
+            last_co_organizer_registration, co_organizer_registration
+        )

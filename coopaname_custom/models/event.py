@@ -36,3 +36,85 @@ class Event(models.Model):
                 registration.employee_id.create_user_portal_access()
             elif registration.partner_id and registration.partner_id.email:
                 registration.partner_id.create_user_portal_access()
+
+    @api.multi
+    def sync_organizer_registrations(self, new_organizer_id):
+        self.ensure_one()
+        attendees = list(
+            filter(None, self.registration_ids.mapped("partner_id").ids)
+        )
+
+        # cancel previous organizer registration
+        if self.organizer_id.id in attendees:
+            old_organizer_reg = self.registration_ids.filtered(
+                lambda r: r.partner_id == self.organizer_id
+            )
+            old_organizer_reg.is_organizer = False
+            old_organizer_reg.button_reg_cancel()
+
+        # create or update new organizer registration
+        if new_organizer_id in attendees:
+            new_organizer_reg = self.registration_ids.filtered(
+                lambda r: r.partner_id == self.organizer_id
+            )
+            new_organizer_reg.is_organizer = True
+            new_organizer_reg.confirm_registration()
+        else:
+            new_registration = self.registration_ids.create(
+                {
+                    "event_id": self.id,
+                    "partner_id": new_organizer_id,
+                    "is_organizer": True,
+                }
+            )
+            new_registration.confirm_registration()
+
+    @api.multi
+    def sync_co_organizer_registrations(self, new_co_organizer_id):
+        self.ensure_one()
+        attendees = list(
+            filter(None, self.registration_ids.mapped("partner_id").ids)
+        )
+
+        # cancel previous oco_rganizer registration
+        if self.co_organizer_id.id in attendees:
+            old_co_organizer_reg = self.registration_ids.filtered(
+                lambda r: r.partner_id == self.co_organizer_id
+            )
+            old_co_organizer_reg.is_co_organizer = False
+            old_co_organizer_reg.button_reg_cancel()
+
+        # create or update new co_organizer registration
+        if new_co_organizer_id in attendees:
+            new_co_organizer_reg = self.registration_ids.filtered(
+                lambda r: r.partner_id == self.co_organizer_id
+            )
+            new_co_organizer_reg.is_co_organizer = True
+            new_co_organizer_reg.confirm_registration()
+        else:
+            new_registration = self.registration_ids.create(
+                {
+                    "event_id": self.id,
+                    "partner_id": new_co_organizer_id,
+                    "is_co_organizer": True,
+                }
+            )
+            new_registration.confirm_registration()
+
+    @api.model
+    def create(self, vals):
+        event = super(Event, self).create(vals)
+        if "organizer_id" in vals:
+            event.sync_organizer_registrations(vals["organizer_id"])
+        if "co_organizer_id" in vals:
+            event.sync_co_organizer_registrations(vals["co_organizer_id"])
+        return event
+
+    @api.multi
+    def write(self, vals):
+        if "organizer_id" in vals:
+            self.sync_organizer_registrations(vals["organizer_id"])
+        if "co_organizer_id" in vals:
+            self.sync_co_organizer_registrations(vals["co_organizer_id"])
+        res = super(Event, self).write(vals)
+        return res

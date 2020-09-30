@@ -11,6 +11,7 @@
         <field name="arch" type="xml">
 
             <field name="organizer_id" position="after">
+                <field name="co_organizer_id"/>
                 <field name="department_id"/>
             </field>
 

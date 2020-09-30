@@ -21,6 +21,7 @@ addon | version | summary
 [hr_cae_documents](hr_cae_documents/) | 12.0.1.1.0 | Manage HR documents in a CAE.
 [hr_cae_event](hr_cae_event/) | 12.0.1.1.0 | Manage HR events in a CAE.
 [hr_cae_event_promotion](hr_cae_event_promotion/) | 12.0.1.1.0 | Manage HR events for promotions in a CAE.
+[hr_cae_event_timesheet_sheet](hr_cae_event_timesheet_sheet/) | 12.0.1.0.0 | Manage Events and Timesheets in a CAE.
 [hr_cae_fr](hr_cae_fr/) | 12.0.1.2.0 | French Localization for HR in a CAE.
 [hr_cae_promotion](hr_cae_promotion/) | 12.0.1.2.0 | Manage promotions in a CAE.
 [hr_cae_recruitment](hr_cae_recruitment/) | 12.0.1.3.0 | Manage recruitment in a CAE.

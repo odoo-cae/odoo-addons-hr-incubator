@@ -60,9 +60,6 @@
             <!-- replaced in hr_employee_documents -->
 
             <!-- edit contact information group -->
-            <xpath expr="//page[@name='personal_information']//field[@name='address_home_id']" position="before">
-                <field name="identification_id"/>
-            </xpath>
             <xpath expr="//page[@name='personal_information']//field[@name='address_home_id']" position="after">
                 <field name="mobile_phone"/>
             </xpath>

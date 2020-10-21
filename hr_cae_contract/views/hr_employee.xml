@@ -13,6 +13,7 @@
 
             <field name="category_ids" position="after">
                 <field name="ongoing_contract_type_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                - <field name="company_id" readonly="True" groups="base.group_multi_company"/>
             </field>
 
         </field>
@@ -26,6 +27,7 @@
 
             <field name="category_ids" position="after">
                 <field name="ongoing_contract_type_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                <field name="company_id" readonly="True" groups="base.group_multi_company"/>
             </field>
 
         </field>

@@ -52,6 +52,12 @@ class Event(models.Model):
 
         return res
 
+    @api.multi
+    def confirm_registrations(self):
+        for event in self:
+            for registration in event.registration_ids:
+                registration.confirm_registration()
+
 
 class EventRegistration(models.Model):
     _inherit = "event.registration"

@@ -33,6 +33,10 @@
                 <attribute name="attrs">{'readonly':[('echelon', '!=', 'main')]}</attribute>
             </field>
 
+            <field name="employee_id" position="after">
+                <field name="company_id" groups="base.group_multi_company"/>
+            </field>
+
             <field name="job_id" position="after">
                 <field name="date_initial_start"/>
             </field>

@@ -29,6 +29,7 @@ class Event(models.Model):
         help="hours",
     )
     co_organizer_id = fields.Many2one("res.partner", string="Co-Organizer")
+    state = fields.Selection(readonly=False)
 
     @api.depends("date_begin", "date_end")
     @api.multi
@@ -51,6 +52,12 @@ class Event(models.Model):
 
         return res
 
+    @api.multi
+    def confirm_registrations(self):
+        for event in self:
+            for registration in event.registration_ids:
+                registration.confirm_registration()
+
 
 class EventRegistration(models.Model):
     _inherit = "event.registration"
@@ -58,6 +65,7 @@ class EventRegistration(models.Model):
     employee_id = fields.Many2one(
         comodel_name="hr.employee", string="Employee", required=False
     )
+    state = fields.Selection(readonly=False)
 
     @api.onchange("employee_id")
     def _onchange_employee_id(self):

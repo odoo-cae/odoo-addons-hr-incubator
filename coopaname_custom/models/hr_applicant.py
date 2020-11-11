@@ -10,7 +10,7 @@ class Applicant(models.Model):
 
     @api.onchange("partner_id")
     def onchange_partner_id(self):
-        res = super(Applicant, self).onchange_partner_id()
+        res = super().onchange_partner_id()
         self.name = self.partner_id.name
         self.partner_name = self.partner_id.name
         return res

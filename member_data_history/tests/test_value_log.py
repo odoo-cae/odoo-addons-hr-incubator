@@ -10,7 +10,7 @@ from odoo import tests
 class TestValueLog(tests.common.TransactionCase):
     def setUp(self):
 
-        super(TestValueLog, self).setUp()
+        super().setUp()
 
         self.employee = self.browse_ref("hr.employee_al")
 

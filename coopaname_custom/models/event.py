@@ -103,7 +103,7 @@ class Event(models.Model):
 
     @api.model
     def create(self, vals):
-        event = super(Event, self).create(vals)
+        event = super().create(vals)
         if "organizer_id" in vals:
             event.sync_organizer_registrations(vals["organizer_id"])
         if "co_organizer_id" in vals:
@@ -116,5 +116,5 @@ class Event(models.Model):
             self.sync_organizer_registrations(vals["organizer_id"])
         if "co_organizer_id" in vals:
             self.sync_co_organizer_registrations(vals["co_organizer_id"])
-        res = super(Event, self).write(vals)
+        res = super().write(vals)
         return res

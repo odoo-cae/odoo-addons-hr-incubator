@@ -1,4 +1,5 @@
 import logging
+from functools import reduce
 
 from dateutil.relativedelta import relativedelta
 
@@ -445,3 +446,66 @@ class Contract(models.Model):
             "target": "current",
             "context": {"form_view_initial_mode": "edit"},
         }
+
+    @api.multi
+    def create_document(self):
+        self.ensure_one()
+        # self.check_existing_document()
+        self.check_required_fields()
+        return self.create_report_action()
+
+    def check_existing_document(self):
+        attachment_ids = self.env["ir.attachment"].search(
+            [("res_model", "=", "hr.contract"), ("res_id", "in", self.ids)]
+        )
+        document_name = self.get_document_name()
+        if document_name in attachment_ids.mapped("name"):
+            raise ValidationError(
+                _(
+                    "A contract document with the name %s already exists."
+                    % document_name
+                )
+            )
+
+    def get_document_name(self):
+        return "CONTR_" + (self.name or "").replace("/", "_").replace(" ", "_")
+
+    def check_required_fields(self, required_fields=None):
+        # takes a list of field names required before printing the document
+        if required_fields:
+            missing_fields = ", ".join(
+                [
+                    field
+                    for field in required_fields
+                    if not self.get_field_value_deep(field)
+                ]
+            )
+            if missing_fields:
+                raise ValidationError(_("Missing fields: %s" % missing_fields))
+
+    def get_field_value_deep(self, nested_field):
+        return reduce(lambda d, key: d[key], nested_field.split("."), self)
+
+    def create_report_action(
+        self,
+        name="hr_cae_contract.report_hr_cae_contract_blank",
+        string="Blank Contract",
+    ):
+        now_str = fields.Datetime.to_string(fields.Datetime.now())
+        document_name = "'{}'".format(self.get_document_name())
+        action_name = "%s-%s" % (self.name, now_str)
+        return (
+            self.env["ir.actions.report"]
+            .create(
+                {
+                    "model": "hr.contract",
+                    "attachment": document_name,
+                    "print_report_name": document_name,
+                    "name": action_name,
+                    "report_name": name,
+                    "report_type": "qweb-pdf",
+                    "string": string,  # à quoi sert String?
+                }
+            )
+            .report_action(self)
+        )

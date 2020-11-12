@@ -6,10 +6,10 @@
 import logging
 
 import phonenumbers
+from phonenumbers import PhoneNumberFormat
 
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
-from phonenumbers import PhoneNumberFormat
 
 _logger = logging.getLogger(__name__)
 

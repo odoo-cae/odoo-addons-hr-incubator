@@ -445,3 +445,10 @@ class Contract(models.Model):
             "target": "current",
             "context": {"form_view_initial_mode": "edit"},
         }
+
+    @api.multi
+    def create_document(self):
+        self.ensure_one()
+        return self.env.ref(
+            "hr_cae_contract.action_hr_contract"
+        ).report_action(self)

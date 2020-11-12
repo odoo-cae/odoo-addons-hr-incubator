@@ -21,6 +21,11 @@
                         type="object"
                         attrs="{'invisible': [('has_termination_contract', '=', True)]}"
                         class="oe_read_only"/>
+                <button name="create_document"
+                        string="Create Document"
+                        type="object"
+                        attrs="{'invisible': [('has_termination_contract', '=', True)]}"
+                        class="oe_read_only"/>
             </field>
 
             <button name="toggle_active" position="after">

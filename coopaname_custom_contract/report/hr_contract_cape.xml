@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <report
+        id="action_hr_contract_cape"
+        model="hr.contract"
+        string="HR Contract CAPE"
+        report_type="qweb-pdf"
+        name="coopaname_custom_contract.hr_contract_cape"
+        file="coopaname_custom_contract.hr_contract_cape.xml"
+        attachment="'CONTR_'+(object.name or '').replace('/','_').replace(' ','_')+'.pdf'"
+    />
+
+    <template id="hr_contract_cape_document">
+        <t t-call="web.external_layout">
+            <div class="page mt32" name="contract_content">
+                <h2>
+                    <span>Contract CAPE</span>
+                </h2>
+            </div>
+        </t>
+    </template>
+
+    <template id="hr_contract_cape">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="coopaname_custom_contract.hr_contract_cape_document"/>
+            </t>
+        </t>
+    </template>
+
+</odoo>

@@ -1,0 +1,51 @@
+# Copyright 2020 Coop IT Easy SCRL fs
+#   Robin Keunen <robin@coopiteasy.be>
+#   Manuel Claeys Bouuaert <manuel@coopiteasy.be>
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
+
+REQUIRED_FIELDS = {
+    "coopaname_custom_contract.report_hr_cae_contract_cape": [
+        "date_start",
+        "date_signature",
+        "turnover_minimum",
+        "hours",
+        "hourly_wage",
+        "wage",
+        "company_id.name",
+        "company_id.company_registry",
+        "company_id.siret",
+        "company_id.ape",
+        "company_id.street",
+        "company_id.city",
+        "company_id.co_ceo.name",
+        "employee_id.name",
+        "employee_id.job_title",
+        "employee_id.birthday",
+        "employee_id.place_of_birth",
+        "employee_id.ssnid",
+        "employee_id.country_id.name",
+        "employee_id.address_home_id.street",
+        "employee_id.address_home_id.city",
+    ],
+    "coopaname_custom_contract.report_hr_cae_contract_cdi": [
+        "duration",
+        "date_start",
+        "date_end",
+        "date_signature",
+        "company_id.name",
+        "company_id.siret",
+        "company_id.ape",
+        "company_id.street",
+        "company_id.city",
+        "company_id.co_ceo.name",
+        "employee_id.name",
+        "employee_id.birthday",
+        "employee_id.place_of_birth",
+        "employee_id.ssnid",
+        "employee_id.job_title",
+        "employee_id.address_home_id.street",
+        "employee_id.address_home_id.city",
+        "employee_id.country_id.name",
+        "employee_id.origin_status_id.name",
+    ],
+}

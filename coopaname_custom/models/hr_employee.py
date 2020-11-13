@@ -2,6 +2,7 @@
 #   Robin Keunen <robin@coopiteasy.be>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
+from __future__ import annotations
 
 import logging
 
@@ -33,7 +34,7 @@ class Employee(models.Model):
     )
 
     @api.model
-    def create(self, values):
+    def create(self, values) -> Employee:
 
         if "mobile_phone" in values and values["mobile_phone"]:
             values["mobile_phone"] = _format_phone_number(
@@ -71,7 +72,7 @@ class Employee(models.Model):
         return employee
 
     @api.multi
-    def write(self, values):
+    def write(self, values: dict) -> bool:
         if "mobile_phone" in values and values["mobile_phone"]:
             values["mobile_phone"] = _format_phone_number(
                 values["mobile_phone"]

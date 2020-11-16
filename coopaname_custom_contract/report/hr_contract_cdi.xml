@@ -1,0 +1,371 @@
+<odoo>
+    <template id="report_hr_cae_contract_cdi_document">
+        <t>
+            <t name="value-settings">
+                <t t-if="doc.employee_id.title">
+                    <t t-set="partner_title_name"
+                       t-value="doc.employee_id.title.name + ' ' +  doc.employee_id.name"/>
+                </t>
+                <t t-else="">
+                    <t t-set="partner_title_name"
+                       t-value="doc.employee_id.name"/>
+                </t>
+                <t t-set="partner_address"
+                   t-value="doc.employee_id.address_home_id"/>
+            </t>
+            <h1>
+                CONTRAT DE TRAVAIL A DURÉE INDÉTERMINÉE
+            </h1>
+            <div>
+                Entre les soussignés :
+            </div>
+            <div>
+                La société coopérative ouvrière de production anonyme
+                <span t-field="doc.company_id.name"/>,
+                dénommée ci-après
+                <span t-field="doc.company_id.name"/>,
+                RCS
+                <span t-field="doc.company_id.siret"/>,
+                <span t-field="doc.company_id.ape"/>
+                dont
+                le siège social est situé au
+                <span t-field="doc.company_id.street"/>
+                –
+                <span t-field="doc.company_id.zip"/>
+                <span t-field="doc.company_id.city_id.name"/>, représentée par
+                sa directrice générale Noémie DE GRENIER, ayant tout pouvoir à
+                l'effet des présentes ci-après dénommée la « Coopérative
+                d’activités »,
+            </div>
+            <div>
+                d'une part,
+            </div>
+            <div>
+                et
+                <span t-class="employee_name" t-esc="partner_title_name"/>,
+                demeurant
+                <span t-field="partner_address.street"/>
+                <span t-field="partner_address.zip"/>
+                <span t-field="partner_address.city"/>
+                Né(e) le
+                <span t-field="doc.employee_id.birthday"/>
+                à
+                <span t-field="doc.employee_id.place_of_birth"/>,
+                N° de sécurité sociale :
+                <span t-field="doc.employee_id.ssnid"/>,
+                de nationalité
+                <span t-field="doc.employee_id.country_id"/>,
+                ci-après dénommé « l’entrepreneur–salarié »,
+            </div>
+            <div>
+                d’autre part,
+            </div>
+            <div>
+                Il a été convenu ce qui suit :
+            </div>
+            <div>
+                <h3>Préambule</h3>
+                <div>
+                    Une Coopérative d’activités propose à des créateurs et
+                    créatrices de tester en grandeur nature la faisabilité de
+                    leur activité, tout en apprenant au fur et à mesure
+                    à maîtriser les paramètres de la gestion et surtout de la
+                    pérennisation d'une activité avec un statut, celui
+                    d’entrepreneur”e” - salarié”e”, qui leur permet d'exercer
+                    leur activité dans un cadre juridique. Au-delà de la
+                    solution individuelle, avec le refus d'une démarche
+                    d'assistanat, la Coopérative d'activités développe une
+                    solution originale en offrant un espace, un cadre : de test
+                    en réel, d'apprentissage actif et d'accompagnement de
+                    terrain. Elle s'inscrit résolument auprès des créateurs et
+                    créatrices potentiels dans une démarche commune de nouvelle
+                    forme d’emploi (sans se limiter au rôle de conseil) : chacun
+                    et chacune développe son activité mais tous participent au
+                    développement de la structure globale.
+                </div>
+                <div>
+                    Entrepreneur-e : c'est la réalité des personnes qui sont, au
+                    sein de la Coopérative d’activités, avant tout des
+                    entrepreneur-e-s assumant le risque de créer, développer une
+                    activité en toute autonomie (dans tous les sens du terme
+                    dans la mesure où chaque activité a une comptabilité en
+                    propre avec une trésorerie clairement identifiée). Salarié-e
+                    : c'est le statut qui leur permet, en cas d'échec d’éviter
+                    les difficultés liées au dépôt de bilan et de pouvoir
+                    “rebondir” en ayant reconstitué des droits sociaux (le
+                    salaire et la couverture sociale étant financés par le
+                    chiffre d'affaires développé par l'entrepreneur-e).
+                </div>
+                <div>
+                    Chaque entrepreneur-e –salarié-e doit savoir qu'il ou elle
+                    peut devenir associé-e salarié-e ; en un mot devenir
+                    co-entrepreneur-e, selon les statuts de la coopérative.
+                </div>
+                <div>
+                    Le présent contrat est conclu de manière volontaire et
+                    réfléchie entre l’entrepreneur-e –salarié-e qui s’inscrit
+                    dans un projet de développement de sa propre activité et la
+                    Coopérative d’activités, dont l’objet même est de
+                    l’accompagner et de lui fournir un cadre juridique. Il est
+                    expressément conclu entre les deux parties que la
+                    conclusion, la vie et la rupture du contrat de travail
+                    devront s’analyser à la lumière de ce préambule. L’ensemble
+                    des articles du présent contrat et leur rédaction résultent
+                    de la volonté de chacune des parties de s’insérer dans le
+                    cadre de ce préambule.
+                </div>
+            </div>
+            <div>
+                <h3>Article 1 - Objet</h3>
+                <div>
+                    <span t-class="employee_name" t-esc="partner_title_name"/>,
+                    qui se déclare libre de tout engagement, est engagé pour une
+                    durée indéterminée, sous réserve des résultats de la visite
+                    médicale d'embauche, à compter du
+                    <span t-field="doc.date_start"/>
+                </div>
+            </div>
+            <div>
+                <h3>Article 2 - Période d’essai</h3>
+                <div>
+                    Il est prévu une période d’essai d’une durée de 1 mois
+                    renouvelable une fois. Durant cette période, chacune des
+                    parties pourra mettre fin au contrat sans préavis ni
+                    indemnité.
+                </div>
+            </div>
+            <div>
+                <h3>Article 3 - Fonctions</h3>
+                <div>
+                    La fonction confiée à
+                    <span t-class="employee_name"
+                          t-esc="partner_title_name"/>,
+                    sera de développer son projet personnel de
+                    <span t-field="doc.job_id"/>.
+                </div>
+            </div>
+            <div>
+                <h3>Article 4 - Obligations de
+                    <span t-class="employee_name" t-esc="partner_title_name"/>
+                </h3>
+                <div>
+                    <span t-class="employee_name" t-esc="partner_title_name"/>
+                    s’engage à mettre en œuvre tous les moyens dont il dispose
+                    et tous ceux mis à sa disposition par la Coopérative
+                    d’activités dans le but d’atteindre son autonomie économique
+                    et personnelle.
+                </div>
+                <div>
+                    Les objectifs de
+                    <span t-class="employee_name" t-esc="partner_title_name"/>
+                    portent sur :
+                    <ul>
+                        <li>Le développement de son activité de
+                            <span t-field="doc.job_id"/>
+                            qui devra se traduire concrètement par un chiffre
+                            d’affaires mensuel hors taxe encaissé d’au moins
+                            <span t-field="doc.turnover_minimum"/>
+                            Euros et par un résultat net positif tenant compte
+                            des charges directes liées à son activité.
+                        </li>
+                        <li>L’acquisition et le développement de ses compétences
+                            techniques et de gestion,
+                        </li>
+                        <li>La mise en place des conditions de résolution de ses
+                            difficultés personnelles en s’appuyant et en
+                            sollicitant l’aide de la Coopérative d’activités, le
+                            cas échéant les autorités compétentes.
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <span t-class="employee_name" t-esc="partner_title_name"/>
+                    s’engage par ailleurs à n’effectuer aucun acte de nature à
+                    nuire à la Coopérative d’activités, notamment,
+                    <span t-class="employee_name" t-esc="partner_title_name"/>
+                    :
+                    <ul>
+                        <li>
+                            ne peut engager juridiquement la Coopérative
+                            d’activités vis à vis d’un tiers,
+                        </li>
+                        <li>
+                            ne peut utiliser lors de démarches commerciales (de
+                            quelque type qu’elles soient) le nom de la
+                            Coopérative d’activités sans autorisation préalable
+                            de sa directrice générale,
+                        </li>
+                        <li>
+                            se doit d’informer la Coopérative d’activités de
+                            tout fait ou modification dans sa situation
+                            personnelle et/ou professionnelle qui pourrait avoir
+                            une incidence sur le fonctionnement de la
+                            Coopérative d’activités.
+                        </li>
+                        <li>
+                            s’engage à respecter toutes les dispositions prévues
+                            par la législation, notamment l’assurance de son
+                            véhicule à des fins professionnelles.
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <span t-field="doc.company_id.name"/>
+                    étant une SCOP, tout salarié a vocation à en devenir
+                    associé. Conformément à la modification des statuts de la
+                    structure en date du 24 juin 2016 liée à l’adoption de la
+                    loi ESS n°2014-856 en date du 31 juillet 2014,
+                    <span t-class="employee_name" t-esc="partner_title_name"/>
+                    devra déposer sa candidature au sociétariat dans les 3 ans
+                    suivants son intégration, soit jusqu’au (calcul 3 ans après
+                    intégration). La candidature au sociétariat devra être
+                    déposée conformément à la procédure décrite dans les statuts
+                    de
+                    <span t-field="doc.company_id.name"/>
+                    . La candidature sera examinée par les associés lors de la
+                    toute prochaine assemblée générale suivant la date de
+                    candidature. A défaut de candidature dans ce délai ou si
+                    cette candidature est rejetée par la majorité des associés
+                    votants, la rupture du contrat de travail sera engagée.
+                </div>
+            </div>
+            <div>
+                <h3>Article 5 : Obligations de la Coopérative d’activités à
+                    l’égard de
+                    <span t-class="employee_name" t-esc="partner_title_name"/>
+                </h3>
+                <div>
+                    Dans l’objectif de l’atteinte par
+                    <span t-class="employee_name" t-esc="partner_title_name"/>
+                    de son autonomie économique et personnelle, la Coopérative
+                    d’activités s’engage à mettre à disposition les moyens
+                    suivants :
+                    <ul>
+                        <li>
+                            un accompagnement personnel,
+                        </li>
+                        <li>
+                            les moyens logistiques suivants : tenue de
+                            comptabilité, facturation (le suivi des
+                            encaissements des clients étant du fait de
+                            <span
+                                    t-esc="partner_title_name"/>),
+                            règlement des factures fournisseurs (lorsque
+                            l’accord préalable a été acquis), remboursement des
+                            frais de déplacements afférents à un chantier ou une
+                            mission (tels que prévus dans le contrat passé avec
+                            le client).
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    La participation aux dépenses mutualisées est imputée sur le
+                    compte de résultat de.s activité.s développée.s par
+                    <span t-class="employee_name" t-esc="partner_title_name"/>
+                    et correspond aux contributions coopératives fixes et
+                    variables, conformément aux statuts. Les montants, taux et
+                    assiettes de celles-ci sont déterminés en assemblées
+                    générales.
+                </div>
+            </div>
+            <div>
+                <h3>Article 6 - Horaires et lieu de travail</h3>
+                <div>
+                    <span t-class="employee_name" t-esc="partner_title_name"/>
+                    exercera son activité pendant une durée de
+                    <span t-field="doc.hours"/>
+                    heures mensuelles (taux horaire brut de
+                    <span t-field="doc.hourly_wage"/>
+                    Euros). Les horaires et lieux de travail seront définis
+                    conjointement en fonction des missions de
+                    <span t-class="employee_name" t-esc="partner_title_name"/>.
+                </div>
+            </div>
+            <div>
+                <h3>Article 7 – Rémunération</h3>
+                <div>
+                    En contrepartie de la mission qui lui a été confiée,
+                    <span t-class="employee_name" t-esc="partner_title_name"/>
+                    percevra une rémunération forfaitaire mensuelle brute de
+                    <span t-field="doc.wage"/>
+                    Euros. Cette rémunération, ainsi que la durée du travail,
+                    seront révisées régulièrement par voie d’avenant au présent
+                    contrat, afin de rendre compte de l’évolution économique de
+                    l’activité. La nature, le montant et le moment des
+                    modifications seront choisis d’un commun accord entre la
+                    coopérative et le coopérateur, tout différend pouvant être
+                    porté devant la représentation du personnel ou toute autre
+                    instance démocratiquement instituée au sein de la
+                    coopérative.
+                </div>
+            </div>
+            <div>
+                <h3>Article 8 : Congés payés et retraite</h3>
+                <div>
+                    Les congés sont les congés légaux.
+                    <span t-class="employee_name" t-esc="partner_title_name"/>
+                    sera affiliée à une caisse de retraite complémentaire
+                    (MEDERIC).
+                </div>
+            </div>
+            <div>
+                <h3>Article 9 : Mutuelle obligatoire</h3>
+                <div>
+                    Dans le cadre de la loi ANI du 14 juin 2013,
+                    <span t-field="doc.company_id.name"/>
+                    se doit d’affilier tout salarié à la mutuelle obligatoire au
+                    niveau de base appelé panier de soins ANI, sauf s’il entre
+                    dans l’une des situations de dispense limitativement
+                    énumérées. Faute de réponse, le salarié sera considéré comme
+                    adhérent au niveau de base.
+                </div>
+            </div>
+            <div>
+                <h3>Article 10 : Prévoyance</h3>
+                <div>
+                    <span t-class="employee_name" t-esc="partner_title_name"/>
+                    bénéficie du régime de prévoyance mis en place au sein de
+                    <span t-field="doc.company_id.name"/>.
+                </div>
+            </div>
+            <div>
+                <h3>Article 11 : Divers</h3>
+                <div>
+                    En cas de décès ou d’incapacité d’exercer l’activité
+                    concernée de
+                    <span t-class="employee_name" t-esc="partner_title_name"/>
+                    , la Coopérative d’activités assurera les contrats en cours
+                    soit elle-même, soit en les confiant à une entreprise
+                    extérieure.
+                </div>
+            </div>
+            <div>
+                Le présent contrat est établi en deux exemplaires.
+            </div>
+            <div>
+                Fait à PARIS, le
+                <span t-esc="datetime.date.today()"/>
+
+            </div>
+            <div>
+                Pour
+                <span t-field="doc.company_id.name"/>
+                La directrice générale
+                Noémie DE GRENIER
+            </div>
+            <div>
+                L’entrepreneur salarié
+                (avec la mention « lu et approuvé »)
+                <span t-class="employee_name" t-esc="partner_title_name"/>
+            </div>
+        </t>
+    </template>
+
+    <template id="report_hr_cae_contract_cdi">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="coopaname_custom_contract.report_hr_cae_contract_cdi_document"/>
+            </t>
+        </t>
+    </template>
+</odoo>

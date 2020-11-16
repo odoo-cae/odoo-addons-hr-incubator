@@ -13,7 +13,11 @@
     "category": "Human Resources",
     "version": "12.0.1.0.0",
     "depends": ["coopaname_custom"],
-    "data": ["report/hr_contract_cape.xml"],
+    "data": [
+        "report/hr_contract_cape.xml",
+        "report/hr_contract_cdi.xml",
+        "report/reports.xml",
+    ],
     "demo": [],
     "external_dependencies": {"python": ["phonenumbers"]},
     "installable": True,

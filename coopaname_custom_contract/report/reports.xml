@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2020 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <report id="action_report_hr_cae_cdi"
+            model="hr.contract"
+            print_report_name="'Contract - %s' % (object.name)"
+            name="hr_cae_contract.report_hr_cae_contract"
+            file="hr_cae_contract.report_hr_cae_contract"
+            report_type="qweb-html"
+            string="Contract"/>
+</odoo>

@@ -32,6 +32,7 @@ Customization specific to Coopaname use case.
 * add category and duration to registration pivot views
 * event's organizer and co-organizer are added to attendees
 * event attendance per partner report
+* co-director field on res.company
 
 Also includes list of modules for Coopaname's deployement.
 

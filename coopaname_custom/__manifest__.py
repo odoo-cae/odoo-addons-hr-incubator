@@ -32,10 +32,11 @@
         "views/event.xml",
         "views/hr_applicant.xml",
         "views/hr_employee.xml",
+        "views/res_company.xml",
         "views/res_partner.xml",
         "views/event_registration.xml",
     ],
-    "demo": [],
+    "demo": ["demo/demo.xml"],
     "external_dependencies": {"python": ["phonenumbers"]},
     "installable": True,
 }

@@ -24,7 +24,7 @@
                 <button name="create_document"
                         string="Create Document"
                         type="object"
-                        attrs="{'invisible': [('has_termination_contract', '=', True)]}"
+                        attrs="{'invisible': [('state', '=', draft)]}"
                         class="oe_read_only"/>
             </field>
 

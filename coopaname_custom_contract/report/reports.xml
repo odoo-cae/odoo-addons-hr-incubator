@@ -7,8 +7,8 @@
     <report id="action_report_hr_cae_cdi"
             model="hr.contract"
             print_report_name="'Contract - %s' % (object.name)"
-            name="hr_cae_contract.report_hr_cae_contract"
-            file="hr_cae_contract.report_hr_cae_contract"
+            name="coopaname_custom_contract.report_hr_cae_contract_cdi"
+            file="coopaname_custom_contract.report_hr_cae_contract_cdi"
             report_type="qweb-html"
-            string="Contract"/>
+            string="CDI"/>
 </odoo>

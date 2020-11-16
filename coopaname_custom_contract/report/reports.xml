@@ -4,9 +4,20 @@
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 -->
 <odoo>
-    <report id="action_report_hr_cae_cdi"
+    <report
+            id="action_hr_contract_cape"
             model="hr.contract"
-            print_report_name="'Contract - %s' % (object.name)"
+            attachment="'CONTR_'+(object.name or '').replace('/','_').replace(' ','_')+'.pdf'"
+            name="coopaname_custom_contract.hr_contract_cape"
+            file="coopaname_custom_contract.hr_contract_cape"
+            report_type="qweb-pdf"
+            string="CAPE"
+    />
+
+    <report
+            id="action_report_hr_cae_cdi"
+            model="hr.contract"
+            print_report_name="'CONTR_'+(object.name or '').replace('/','_').replace(' ','_')+'.pdf'"
             name="coopaname_custom_contract.report_hr_cae_contract_cdi"
             file="coopaname_custom_contract.report_hr_cae_contract_cdi"
             report_type="qweb-html"

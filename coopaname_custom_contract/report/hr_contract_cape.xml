@@ -1,29 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
-    <report
-        id="action_hr_contract_cape"
-        model="hr.contract"
-        string="HR Contract CAPE"
-        report_type="qweb-pdf"
-        name="coopaname_custom_contract.hr_contract_cape"
-        file="coopaname_custom_contract.hr_contract_cape.xml"
-        attachment="'CONTR_'+(object.name or '').replace('/','_').replace(' ','_')+'.pdf'"
-    />
-
     <template id="hr_contract_cape_document">
         <t t-call="web.external_layout">
             <div class="page mt32" name="contract_content">
+                <t name="value-settings">
+                    <t t-if="doc.employee_id.title">
+                        <t t-set="partner_title_name"
+                           t-value="doc.employee_id.title.name + ' ' +  doc.employee_id.name"/>
+                    </t>
+                    <t t-else="">
+                        <t t-set="partner_title_name"
+                           t-value="doc.employee_id.name"/>
+                    </t>
+                    <t t-set="partner_address"
+                       t-value="doc.employee_id.address_home_id"/>
+                </t>
                 <h2>
-                    <span>Contract CAPE</span>
+                    <span>CONVENTION D’ACCOMPAGNEMENT À LA CRÉATION D’UNE ACTIVITÉ INDIVIDUELLE</span>
                 </h2>
+
+                <p>
+                    Entre les soussignés :
+                </p>
+                <p>
+                    La société coopérative ouvrière de production anonyme
+                    <span t-field="doc.company_id.name"/>,
+                    dénommée ci-après
+                    <span t-field="doc.company_id.name"/>,
+                    <span t-field="doc.company_id.company_registry"/>
+                    <span t-field="doc.company_id.siret"/>,
+                    APE
+                    <span t-field="doc.company_id.ape"/>,
+                    dont le siège social est situé
+                    <span t-field="doc.company_id.street"/>
+                    <span t-field="doc.company_id.street2"/>
+                    <span t-field="doc.company_id.zip"/>
+                    <span t-field="doc.company_id.city"/>,
+                    représentée par
+                    <span t-field="doc.company_id.co_ceo.name"/>,
+                    ayant tout pouvoir à l'effet des présentes.
+                </p>
+                <p>
+                    d'une part,
+                </p>
+                <p>
+                    et
+                    <span t-class="employee_name" t-esc="partner_title_name"/>,
+                    demeurant
+                    <span t-field="doc.employee_id.address_home_id.street"/>
+                    <span t-field="doc.employee_id.address_home_id.street2"/>
+                    <span t-field="doc.employee_id.address_home_id.zip"/>
+                    <span t-field="doc.employee_id.address_home_id.city"/>,
+                    Né(e) le
+                    <span t-field="doc.employee_id.birthday"/>
+                    à
+                    <span t-field="doc.employee_id.place_of_birth"/>,
+                    <span t-field="doc.employee_id.country_of_birth"/>
+                    N° de sécurité sociale :
+                    <span t-field="doc.employee_id.ssnid"/>
+                    de nationalité
+                    <t t-if="doc.employee_id.country_id.name == 'France'"/>
+                        française
+                    <t/>
+                    <t t-if="doc.employee_id.country_id.name != 'France'"/>
+                        <span t-field="doc.employee_id.country_id.name"/>
+                    <t/> dont le statut actuel est
+                    <span t-field="doc.employee_id.origin_status_id.name"/>,
+                    ci-après dénommé le développeur d’activité
+                </p>
+                <p>
+                    d'autre part,
+                </p>
+                <p>
+                    Il a été convenu ce qui suit :
+                </p>
+                <h4>
+                    Article 1 - Objet
+                </h4>
+                <p>
+                    La présente convention a pour objet l’accompagnement économique, juridique de l’activité professionnelle de
+                    <span t-field="doc.employee_id.job_id.name"/>
+                    que le développeur d’activité souhaite créer, pour en assurer le lancement et le développement dans de bonnes conditions.
+                </p>
+                <h4>
+                    Article 2 - Obligations du développeur d’activités
+                </h4>
+                <p>
+                    Le développeur d’activité s’engage à mettre en œuvre tous les moyens dont il dispose et tous ceux mis à sa disposition par
+                    <span t-field="doc.company_id.name"/>,
+                    dans le but d’atteindre son autonomie économique et personnelle. Les objectifs du développeur d’activité portent sur :
+                    <ul>
+                        <li>
+                            Le développement de son activité qui devra se traduire concrètement sur la période du présent contrat par la réalisation d’un chiffre d’affaires, dont l’évolution analysée périodiquement devra permettre d’envisager une concrétisation, sur une période de
+                            <span t-field="doc.duration"/>
+                            mois du
+                            <span t-field="doc.date_start"/>
+                            au
+                            <span t-field="doc.date_end"/>.
+                        </li>
+                        <li>
+                            L’acquisition et le développement de ses compétences techniques et de gestion,
+                        </li>
+                        <li>
+                            La mise en place des conditions de résolution de ses difficultés personnelles en s’appuyant et en sollicitant l’aide de la société
+                            <span t-field="doc.company_id.name"/>.
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    Le développeur d’activité s’engage par ailleurs à n’effectuer aucun acte de nature à nuire à la société
+                    <span t-field="doc.company_id.name"/>,
+                    notamment, le développeur d’activité :
+                    <ul>
+                        <li>
+                            Ne peut engager juridiquement la société
+                            <span t-field="doc.company_id.name"/>,
+                            vis à vis d’un tiers,
+                        </li>
+                        <li>
+                            Ne peut utiliser lors de démarches commerciales (de quelque type qu’elles soient) le nom de la société
+                            <span t-field="doc.company_id.name"/>
+                            sans autorisation préalable de son directeur général,
+                        </li>
+                        <li>
+                            Se doit d’informer la société
+                            <span t-field="doc.company_id.name"/>
+                            de tout fait ou modification dans sa situation personnelle et/ou professionnelle qui pourrait avoir une incidence sur le fonctionnement de la société
+                            <span t-field="doc.company_id.name"/>,
+                            et le devenir de son projet
+                        </li>
+                        <li>
+                            S’engage à respecter toutes les dispositions prévues par la législation, notamment l’assurance de son véhicule à des fins professionnelles ainsi que son entretien.
+                        </li>
+                    </ul>
+                </p>
+                <h4>Article 3 : Obligations de la société
+                    <span t-field="doc.company_id.name"/>
+                    à l’égard du développeur d’activité</h4>
+                <p>
+                    Dans l’objectif de l’atteinte par le développeur d’activité de son autonomie économique et personnelle, la société
+                    <span t-field="doc.company_id.name"/>,
+                    s’engage à mettre à disposition les moyens suivants :
+                    <ul>
+                        <li>
+                            Un accompagnement personnel,
+                        </li>
+                        <li>
+                            Les moyens logistiques suivants : tenue de comptabilité, facturation (l’encaissement  étant du fait de
+                            <span t-class="employee_name" t-esc="partner_title_name"/>),
+                            règlement des factures fournisseurs (lorsque l’accord préalable a été acquis), remboursement des frais de déplacements afférents à un chantier ou une mission (tels que prévus dans le contrat passé avec le client).
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    Le montant du chiffre d’affaires réalisé progressivement par
+                    <span t-class="employee_name" t-esc="partner_title_name"/>
+                    fera l’objet de revenus salariaux à l’issue  de la durée de la convention ; après acquittement des charges directes ou indirectes liées à l’ensemble des activités développées au sein de la coopérative. Les charges susdites comprennent les contributions coopératives fixes et variables définies en assemblée générale de la coopérative. Celles-ci sont définies conformément aux statuts. Les montants, taux et assiettes des contributions sont déterminés en assemblées générales
+                </p>
+                <h4>
+                    Article 4 : Propriété de l’activité/confidentialité
+                </h4>
+                <p>
+                    Le développeur d’activité est propriétaire dès son embauche de l’activité économique de production de services, objet du projet personnel qu’il aura développé. En cas de décès ou d’incapacité d’exercer l’activité concernée de
+                    <span t-class="employee_name" t-esc="partner_title_name"/>,
+                    la société
+                    <span t-field="doc.company_id.name"/>,
+                    assurera les contrats en cours soit elle-même, soit en les confiant à une entreprise extérieure.
+                    <span t-field="doc.company_id.name"/>,
+                    s’engage à respecter le secret professionnel et la confidentialité de toutes les informations auxquelles il a accès.
+                </p>
+                <p>
+                    La présente convention est établie en deux exemplaires.
+                    Fait à PARIS le
+                    <span t-field="doc.date_signature"/>
+                </p>
+                <p>
+                    Pour
+                    <span t-field="doc.company_id.name"/>
+                    <br/>
+                    <span t-field="doc.company_id.co_ceo.name"/>.
+                </p>
             </div>
         </t>
     </template>
 
     <template id="hr_contract_cape">
         <t t-call="web.html_container">
-            <t t-foreach="docs" t-as="o">
+            <t t-foreach="docs" t-as="doc">
                 <t t-call="coopaname_custom_contract.hr_contract_cape_document"/>
             </t>
         </t>

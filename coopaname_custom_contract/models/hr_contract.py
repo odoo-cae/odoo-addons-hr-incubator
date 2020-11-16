@@ -7,8 +7,10 @@ class Contract(models.Model):
     @api.multi
     def create_document(self):
         self.ensure_one()
-        if self.type_id == self.env.ref(
-            "hr_cae_contract.hr_contract_type_cape"
+        if (
+            self.type_id
+            == self.env.ref("coopaname_custom_contract.hr_contract_type_cape")
+            and self.echelon == "main"
         ):
             action = self.env.ref(
                 "coopaname_custom_contract.action_hr_contract_cape"
@@ -19,7 +21,7 @@ class Contract(models.Model):
             and self.echelon == "main"
         ):
             action = self.env.ref(
-                "coopaname_custom_contract.action_hr_contract_cape"
+                "coopaname_custom_contract.action_hr_contract_cdi"
             ).report_action(self)
         else:
             action = self.env.ref(

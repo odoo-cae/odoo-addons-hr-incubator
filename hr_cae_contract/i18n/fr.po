@@ -478,7 +478,7 @@ msgstr "Contrats de résiliation"
 #: code:addons/hr_cae_contract/models/hr_contract.py:381
 #, python-format
 msgid "The maximum amount of %s contracts of type '%s' has been reached"
-msgstr "Le montant maximal des %s contrats de type "%s" a été atteint"
+msgstr "Le montant maximal des %s contrats de type '%s' a été atteint"
 
 #. module: hr_cae_contract
 #: code:addons/hr_cae_contract/models/hr_contract.py:398

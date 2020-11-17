@@ -9,7 +9,7 @@ class Contract(models.Model):
         self.ensure_one()
         if (
             self.type_id
-            == self.env.ref("coopaname_custom_contract.hr_contract_type_cape")
+            == self.env.ref("hr_cae_contract.hr_contract_type_cape")
             and self.echelon == "main"
         ):
             action = self.env.ref(
@@ -17,7 +17,7 @@ class Contract(models.Model):
             ).report_action(self)
         elif (
             self.type_id
-            == self.env.ref("coopaname_custom_contract.hr_contract_type_cdi")
+            == self.env.ref("hr_cae_contract.hr_contract_type_cdi")
             and self.echelon == "main"
         ):
             action = self.env.ref(

@@ -2,6 +2,7 @@
 #   Manuel Claeys Bouuaert <manuel@coopiteasy.be>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
+from __future__ import annotations
 from odoo import api, fields, models
 
 
@@ -102,7 +103,7 @@ class Event(models.Model):
             new_registration.confirm_registration()
 
     @api.model
-    def create(self, vals):
+    def create(self, vals) -> Event:
         event = super(Event, self).create(vals)
         if "organizer_id" in vals:
             event.sync_organizer_registrations(vals["organizer_id"])
@@ -111,7 +112,7 @@ class Event(models.Model):
         return event
 
     @api.multi
-    def write(self, vals):
+    def write(self, vals) -> bool:
         if "organizer_id" in vals:
             self.sync_organizer_registrations(vals["organizer_id"])
         if "co_organizer_id" in vals:

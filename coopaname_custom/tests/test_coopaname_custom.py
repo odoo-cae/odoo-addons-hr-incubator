@@ -21,10 +21,23 @@ class TestCoopanameCustom(TransactionCase):
         self.assertEquals(applicant.partner_name, partner.name)
 
     def test_format_phone_number(self):
+        number_inter_fr06 = "+33699687678"
+        number_inter_fr07 = "+33799687678"
+
+        alice = self.env["hr.employee"].create(
+            {
+                "firstname": "Alice",
+                "lastname": "Rustacean",
+                "mobile_phone": number_inter_fr06,
+                "work_phone": number_inter_fr07,
+            }
+        )
+
+        self.assertEqual(alice.mobile_phone, "06 99 68 76 78")
+        self.assertEqual(alice.work_phone, "07 99 68 76 78")
 
         number_fr = "0699687678"
         number_be = "+32 4888657 50"
-
         ernest = self.env["hr.employee"].create(
             {
                 "firstname": "Ernest",

@@ -9,20 +9,23 @@ import phonenumbers
 
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
+from phonenumbers import PhoneNumberFormat
 
 _logger = logging.getLogger(__name__)
 
 
-def _format_phone_number(number):
+def _format_phone_number(number: str) -> str:
+    """Format a given phone number into a standardized one.
+    Special case numbers with +33 indicator (france) are rendered
+    as national numbers without international prefix."""
     number = phonenumbers.parse(number, "FR")
-    if number.country_code == 33:
-        return phonenumbers.format_number(
-            number, phonenumbers.PhoneNumberFormat.NATIONAL
-        )
-    else:
-        return phonenumbers.format_number(
-            number, phonenumbers.PhoneNumberFormat.INTERNATIONAL
-        )
+    formatter = (
+        PhoneNumberFormat.NATIONAL
+        if number.country_code == 33
+        else PhoneNumberFormat.INTERNATIONAL
+    )
+
+    return phonenumbers.format_number(number, formatter)
 
 
 class Employee(models.Model):

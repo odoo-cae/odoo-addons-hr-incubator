@@ -1,0 +1,29 @@
+<odoo>
+    <template id="report_hr_cae_contract_salary_reminder_document">
+        <t t-call="web.external_layout">
+            <t name="value-settings">
+                <t t-if="doc.employee_id.title">
+                    <t t-set="partner_title_name"
+                       t-value="doc.employee_id.title.name + ' ' +  doc.employee_id.name"/>
+                </t>
+                <t t-else="">
+                    <t t-set="partner_title_name"
+                       t-value="doc.employee_id.name"/>
+                </t>
+                <t t-set="partner_address"
+                   t-value="doc.employee_id.address_home_id"/>
+            </t>
+            <h1>
+                CONTRAT Salary Reminder
+            </h1>
+        </t>
+    </template>
+
+    <template id="report_hr_cae_contract_salary_reminder">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="coopaname_custom_contract.report_hr_cae_contract_salary_reminder_document"/>
+            </t>
+        </t>
+    </template>
+</odoo>

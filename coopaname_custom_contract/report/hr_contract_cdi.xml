@@ -1,6 +1,6 @@
 <odoo>
     <template id="report_hr_cae_contract_cdi_document">
-        <t>
+        <t t-call="web.external_layout">
             <t name="value-settings">
                 <t t-if="doc.employee_id.title">
                     <t t-set="partner_title_name"
@@ -30,10 +30,12 @@
                 dont
                 le siège social est situé au
                 <span t-field="doc.company_id.street"/>
+                <span t-field="doc.company_id.street2"/>
                 –
                 <span t-field="doc.company_id.zip"/>
-                <span t-field="doc.company_id.city_id.name"/>, représentée par
-                sa directrice générale Noémie DE GRENIER, ayant tout pouvoir à
+                <span t-field="doc.company_id.city"/>, représentée par
+                <span t-field="doc.company_id.co_ceo.name"/>,
+                ayant tout pouvoir à
                 l'effet des présentes ci-après dénommée la « Coopérative
                 d’activités »,
             </div>
@@ -45,6 +47,7 @@
                 <span t-class="employee_name" t-esc="partner_title_name"/>,
                 demeurant
                 <span t-field="partner_address.street"/>
+                <span t-field="partner_address.street2"/>
                 <span t-field="partner_address.zip"/>
                 <span t-field="partner_address.city"/>
                 Né(e) le
@@ -54,7 +57,12 @@
                 N° de sécurité sociale :
                 <span t-field="doc.employee_id.ssnid"/>,
                 de nationalité
-                <span t-field="doc.employee_id.country_id"/>,
+                <t t-if="doc.employee_id.country_id.name == 'France'"/>
+                    française
+                <t/>
+                <t t-if="doc.employee_id.country_id.name != 'France'"/>
+                    <span t-field="doc.employee_id.country_id.name"/>
+                <t/>
                 ci-après dénommé « l’entrepreneur–salarié »,
             </div>
             <div>
@@ -141,7 +149,7 @@
                     <span t-class="employee_name"
                           t-esc="partner_title_name"/>,
                     sera de développer son projet personnel de
-                    <span t-field="doc.job_id"/>.
+                    <span t-field="doc.employee_id.job_title"/>.
                 </div>
             </div>
             <div>
@@ -161,7 +169,7 @@
                     portent sur :
                     <ul>
                         <li>Le développement de son activité de
-                            <span t-field="doc.job_id"/>
+                            <span t-field="doc.employee_id.job_title"/>
                             qui devra se traduire concrètement par un chiffre
                             d’affaires mensuel hors taxe encaissé d’au moins
                             <span t-field="doc.turnover_minimum"/>
@@ -248,8 +256,7 @@
                             les moyens logistiques suivants : tenue de
                             comptabilité, facturation (le suivi des
                             encaissements des clients étant du fait de
-                            <span
-                                    t-esc="partner_title_name"/>),
+                            <span t-class="employee_name" t-esc="partner_title_name"/>),
                             règlement des factures fournisseurs (lorsque
                             l’accord préalable a été acquis), remboursement des
                             frais de déplacements afférents à un chantier ou une
@@ -344,18 +351,19 @@
             </div>
             <div>
                 Fait à PARIS, le
-                <span t-esc="datetime.date.today()"/>
+                <span t-field="doc.date_signature"/>
 
             </div>
             <div>
                 Pour
                 <span t-field="doc.company_id.name"/>
-                La directrice générale
-                Noémie DE GRENIER
+                <br/>
+                <span t-field="doc.company_id.co_ceo.name"/>.
             </div>
             <div>
                 L’entrepreneur salarié
                 (avec la mention « lu et approuvé »)
+                <br/>
                 <span t-class="employee_name" t-esc="partner_title_name"/>
             </div>
         </t>

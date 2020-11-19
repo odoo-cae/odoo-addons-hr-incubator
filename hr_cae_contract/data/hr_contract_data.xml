@@ -87,7 +87,7 @@
         </record>
 
         <!--Rémunération CAPE-->
-        <record id="hr_contract_cape_remuneration" model="hr.contract.type">
+        <record id="hr_contract_type_cape_remuneration" model="hr.contract.type">
             <field name="name">CAPE Remuneration</field>
             <field name="echelon">amendment</field>
             <field name="sequence">208</field>

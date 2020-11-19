@@ -1,32 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
-    <report
-        id="action_hr_contract"
-        model="hr.contract"
-        string="HR Contract"
-        report_type="qweb-pdf"
-        name="hr_cae_contract.hr_contract"
-        file="hr_cae_contract.hr_contract.xml"
-        attachment="'CONTR_'+(object.name or '').replace('/','_').replace(' ','_')+'.pdf'"
-    />
-
-    <template id="hr_contract_document">
+    <template id="report_hr_cae_contract_blank_document">
         <t t-call="web.external_layout">
-            <div class="page mt32" name="contract_content">
-                <h2>
-                    <span>Contract</span>
-                </h2>
-            </div>
+            <h1>
+                Contract
+            </h1>
         </t>
     </template>
 
-    <template id="hr_contract">
+    <template id="report_hr_cae_contract_blank">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
-                <t t-call="hr_cae_contract.hr_contract_document"/>
+                <t t-call="hr_cae_contract.report_hr_cae_contract_blank_document"/>
             </t>
         </t>
     </template>
-
 </odoo>

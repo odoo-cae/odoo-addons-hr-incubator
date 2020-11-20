@@ -459,7 +459,7 @@ class Contract(models.Model):
             [("res_model", "=", "hr.contract"), ("res_id", "in", self.ids)]
         )
         document_name = self.get_document_name()
-        if document_name + ".pdf" in attachment_ids.mapped("name"):
+        if document_name in attachment_ids.mapped("name"):
             raise ValidationError(
                 _(
                     "A contract document with the name %s already exists."

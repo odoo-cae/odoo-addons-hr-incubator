@@ -452,11 +452,7 @@ class Contract(models.Model):
         self.ensure_one()
         self.check_existing_document()
         self.check_required_fields()
-        # takes a list of field names required before printing the document
         return self.create_report_action()
-
-    def get_document_name(self):
-        return "CONTR_" + (self.name or "").replace("/", "_").replace(" ", "_")
 
     def check_existing_document(self):
         attachment_ids = self.env["ir.attachment"].search(
@@ -471,29 +467,11 @@ class Contract(models.Model):
                 )
             )
 
-    def create_report_action(
-        self,
-        name="hr_cae_contract.report_hr_cae_contract_blank",
-        string="Blank Contract",
-    ):
-        return (
-            self.env["ir.actions.report"]
-            .create(
-                {
-                    "model": "hr.contract",
-                    "attachment": self.get_document_name(),
-                    "print_report_name": self.get_document_name(),
-                    "name": name,
-                    "file": name,
-                    "report_name": name,
-                    "report_type": "qweb-pdf",
-                    "string": string,
-                }
-            )
-            .report_action(self)
-        )
+    def get_document_name(self):
+        return "CONTR_" + (self.name or "").replace("/", "_").replace(" ", "_")
 
     def check_required_fields(self, required_fields=None):
+        # takes a list of field names required before printing the document
         if required_fields:
             missing_fields = ", ".join(
                 [
@@ -507,3 +485,27 @@ class Contract(models.Model):
 
     def deep_get(self, nested_field):
         return reduce(lambda d, key: d[key], nested_field.split("."), self)
+
+    def create_report_action(
+        self,
+        name="hr_cae_contract.report_hr_cae_contract_blank",
+        string="Blank Contract",
+    ):
+        return (
+            self.env["ir.actions.report"]
+            .create(
+                {
+                    "model": "hr.contract",
+                    "attachment": "'{}'".format(self.get_document_name()),
+                    "print_report_name": "'{}'".format(
+                        self.get_document_name()
+                    ),
+                    "name": name,
+                    "file": name,
+                    "report_name": name,
+                    "report_type": "qweb-pdf",
+                    "string": string,
+                }
+            )
+            .report_action(self)
+        )

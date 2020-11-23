@@ -477,13 +477,13 @@ class Contract(models.Model):
                 [
                     field
                     for field in required_fields
-                    if not self.deep_get(field)
+                    if not self.get_field_value_deep(field)
                 ]
             )
             if missing_fields:
                 raise ValidationError(_("Missing fields: %s" % missing_fields))
 
-    def deep_get(self, nested_field):
+    def get_field_value_deep(self, nested_field):
         return reduce(lambda d, key: d[key], nested_field.split("."), self)
 
     def create_report_action(

@@ -16,10 +16,10 @@
             <h1>
                 CONTRAT DE TRAVAIL A DURÉE INDÉTERMINÉE
             </h1>
-            <div>
+            <p>
                 Entre les soussignés :
-            </div>
-            <div>
+            </p>
+            <p>
                 La société coopérative ouvrière de production anonyme
                 <span t-field="doc.company_id.name"/>,
                 dénommée ci-après
@@ -38,11 +38,11 @@
                 ayant tout pouvoir à
                 l'effet des présentes ci-après dénommée la « Coopérative
                 d’activités »,
-            </div>
-            <div>
+            </p>
+            <p>
                 d'une part,
-            </div>
-            <div>
+            </p>
+            <p>
                 et
                 <span t-class="employee_name" t-esc="partner_title_name"/>,
                 demeurant
@@ -64,16 +64,16 @@
                     <span t-field="doc.employee_id.country_id.name"/>
                 <t/>
                 ci-après dénommé « l’entrepreneur–salarié »,
-            </div>
-            <div>
+            </p>
+            <p>
                 d’autre part,
-            </div>
-            <div>
+            </p>
+            <p>
                 Il a été convenu ce qui suit :
-            </div>
+            </p>
             <div>
                 <h3>Préambule</h3>
-                <div>
+                <p>
                     Une Coopérative d’activités propose à des créateurs et
                     créatrices de tester en grandeur nature la faisabilité de
                     leur activité, tout en apprenant au fur et à mesure
@@ -90,8 +90,8 @@
                     forme d’emploi (sans se limiter au rôle de conseil) : chacun
                     et chacune développe son activité mais tous participent au
                     développement de la structure globale.
-                </div>
-                <div>
+                </p>
+                <p>
                     Entrepreneur-e : c'est la réalité des personnes qui sont, au
                     sein de la Coopérative d’activités, avant tout des
                     entrepreneur-e-s assumant le risque de créer, développer une
@@ -103,13 +103,13 @@
                     “rebondir” en ayant reconstitué des droits sociaux (le
                     salaire et la couverture sociale étant financés par le
                     chiffre d'affaires développé par l'entrepreneur-e).
-                </div>
-                <div>
+                </p>
+                <p>
                     Chaque entrepreneur-e –salarié-e doit savoir qu'il ou elle
                     peut devenir associé-e salarié-e ; en un mot devenir
                     co-entrepreneur-e, selon les statuts de la coopérative.
-                </div>
-                <div>
+                </p>
+                <p>
                     Le présent contrat est conclu de manière volontaire et
                     réfléchie entre l’entrepreneur-e –salarié-e qui s’inscrit
                     dans un projet de développement de sa propre activité et la
@@ -121,49 +121,49 @@
                     des articles du présent contrat et leur rédaction résultent
                     de la volonté de chacune des parties de s’insérer dans le
                     cadre de ce préambule.
-                </div>
+                </p>
             </div>
             <div>
                 <h3>Article 1 - Objet</h3>
-                <div>
+                <p>
                     <span t-class="employee_name" t-esc="partner_title_name"/>,
                     qui se déclare libre de tout engagement, est engagé pour une
                     durée indéterminée, sous réserve des résultats de la visite
                     médicale d'embauche, à compter du
                     <span t-field="doc.date_start"/>
-                </div>
+                </p>
             </div>
             <div>
                 <h3>Article 2 - Période d’essai</h3>
-                <div>
+                <p>
                     Il est prévu une période d’essai d’une durée de 1 mois
                     renouvelable une fois. Durant cette période, chacune des
                     parties pourra mettre fin au contrat sans préavis ni
                     indemnité.
-                </div>
+                </p>
             </div>
             <div>
                 <h3>Article 3 - Fonctions</h3>
-                <div>
+                <p>
                     La fonction confiée à
                     <span t-class="employee_name"
                           t-esc="partner_title_name"/>,
                     sera de développer son projet personnel de
                     <span t-field="doc.employee_id.job_title"/>.
-                </div>
+                </p>
             </div>
             <div>
                 <h3>Article 4 - Obligations de
                     <span t-class="employee_name" t-esc="partner_title_name"/>
                 </h3>
-                <div>
+                <p>
                     <span t-class="employee_name" t-esc="partner_title_name"/>
                     s’engage à mettre en œuvre tous les moyens dont il dispose
                     et tous ceux mis à sa disposition par la Coopérative
                     d’activités dans le but d’atteindre son autonomie économique
                     et personnelle.
-                </div>
-                <div>
+                </p>
+                <p>
                     Les objectifs de
                     <span t-class="employee_name" t-esc="partner_title_name"/>
                     portent sur :
@@ -185,8 +185,8 @@
                             cas échéant les autorités compétentes.
                         </li>
                     </ul>
-                </div>
-                <div>
+                </p>
+                <p>
                     <span t-class="employee_name" t-esc="partner_title_name"/>
                     s’engage par ailleurs à n’effectuer aucun acte de nature à
                     nuire à la Coopérative d’activités, notamment,
@@ -216,8 +216,8 @@
                             véhicule à des fins professionnelles.
                         </li>
                     </ul>
-                </div>
-                <div>
+                </p>
+                <p>
                     <span t-field="doc.company_id.name"/>
                     étant une SCOP, tout salarié a vocation à en devenir
                     associé. Conformément à la modification des statuts de la
@@ -229,20 +229,20 @@
                     intégration). La candidature au sociétariat devra être
                     déposée conformément à la procédure décrite dans les statuts
                     de
-                    <span t-field="doc.company_id.name"/>
-                    . La candidature sera examinée par les associés lors de la
+                    <span t-field="doc.company_id.name"/>.
+                    La candidature sera examinée par les associés lors de la
                     toute prochaine assemblée générale suivant la date de
                     candidature. A défaut de candidature dans ce délai ou si
                     cette candidature est rejetée par la majorité des associés
                     votants, la rupture du contrat de travail sera engagée.
-                </div>
+                </p>
             </div>
             <div>
                 <h3>Article 5 : Obligations de la Coopérative d’activités à
                     l’égard de
                     <span t-class="employee_name" t-esc="partner_title_name"/>
                 </h3>
-                <div>
+                <p>
                     Dans l’objectif de l’atteinte par
                     <span t-class="employee_name" t-esc="partner_title_name"/>
                     de son autonomie économique et personnelle, la Coopérative
@@ -264,8 +264,8 @@
                             le client).
                         </li>
                     </ul>
-                </div>
-                <div>
+                </p>
+                <p>
                     La participation aux dépenses mutualisées est imputée sur le
                     compte de résultat de.s activité.s développée.s par
                     <span t-class="employee_name" t-esc="partner_title_name"/>
@@ -273,11 +273,11 @@
                     variables, conformément aux statuts. Les montants, taux et
                     assiettes de celles-ci sont déterminés en assemblées
                     générales.
-                </div>
+                </p>
             </div>
             <div>
                 <h3>Article 6 - Horaires et lieu de travail</h3>
-                <div>
+                <p>
                     <span t-class="employee_name" t-esc="partner_title_name"/>
                     exercera son activité pendant une durée de
                     <span t-field="doc.hours"/>
@@ -286,11 +286,11 @@
                     Euros). Les horaires et lieux de travail seront définis
                     conjointement en fonction des missions de
                     <span t-class="employee_name" t-esc="partner_title_name"/>.
-                </div>
+                </p>
             </div>
             <div>
                 <h3>Article 7 – Rémunération</h3>
-                <div>
+                <p>
                     En contrepartie de la mission qui lui a été confiée,
                     <span t-class="employee_name" t-esc="partner_title_name"/>
                     percevra une rémunération forfaitaire mensuelle brute de
@@ -304,20 +304,20 @@
                     porté devant la représentation du personnel ou toute autre
                     instance démocratiquement instituée au sein de la
                     coopérative.
-                </div>
+                </p>
             </div>
             <div>
                 <h3>Article 8 : Congés payés et retraite</h3>
-                <div>
+                <p>
                     Les congés sont les congés légaux.
                     <span t-class="employee_name" t-esc="partner_title_name"/>
                     sera affiliée à une caisse de retraite complémentaire
                     (MEDERIC).
-                </div>
+                </p>
             </div>
             <div>
                 <h3>Article 9 : Mutuelle obligatoire</h3>
-                <div>
+                <p>
                     Dans le cadre de la loi ANI du 14 juin 2013,
                     <span t-field="doc.company_id.name"/>
                     se doit d’affilier tout salarié à la mutuelle obligatoire au
@@ -325,46 +325,47 @@
                     dans l’une des situations de dispense limitativement
                     énumérées. Faute de réponse, le salarié sera considéré comme
                     adhérent au niveau de base.
-                </div>
+                </p>
             </div>
             <div>
                 <h3>Article 10 : Prévoyance</h3>
-                <div>
+                <p>
                     <span t-class="employee_name" t-esc="partner_title_name"/>
                     bénéficie du régime de prévoyance mis en place au sein de
                     <span t-field="doc.company_id.name"/>.
-                </div>
+                </p>
             </div>
             <div>
                 <h3>Article 11 : Divers</h3>
-                <div>
+                <p>
                     En cas de décès ou d’incapacité d’exercer l’activité
                     concernée de
                     <span t-class="employee_name" t-esc="partner_title_name"/>
                     , la Coopérative d’activités assurera les contrats en cours
                     soit elle-même, soit en les confiant à une entreprise
                     extérieure.
-                </div>
+                </p>
             </div>
             <div>
-                Le présent contrat est établi en deux exemplaires.
-            </div>
-            <div>
-                Fait à PARIS, le
-                <span t-field="doc.date_signature"/>
-
-            </div>
-            <div>
-                Pour
-                <span t-field="doc.company_id.name"/>
-                <br/>
-                <span t-field="doc.company_id.co_ceo.name"/>.
-            </div>
-            <div>
-                L’entrepreneur salarié
-                (avec la mention « lu et approuvé »)
-                <br/>
-                <span t-class="employee_name" t-esc="partner_title_name"/>
+                <p>
+                    Le présent contrat est établi en deux exemplaires.
+                </p>
+                <p>
+                    Fait à PARIS, le
+                    <span t-field="doc.date_signature"/>
+                </p>
+                <p>
+                    Pour
+                    <span t-field="doc.company_id.name"/>
+                    <br/>
+                    <span t-field="doc.company_id.co_ceo.name"/>.
+                </p>
+                <p>
+                    L’entrepreneur salarié
+                    (avec la mention « lu et approuvé »)
+                    <br/>
+                    <span t-class="employee_name" t-esc="partner_title_name"/>
+                </p>
             </div>
         </t>
     </template>

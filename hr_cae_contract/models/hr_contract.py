@@ -450,7 +450,7 @@ class Contract(models.Model):
     @api.multi
     def create_document(self):
         self.ensure_one()
-        self.check_existing_document()
+        # self.check_existing_document()
         self.check_required_fields()
         return self.create_report_action()
 
@@ -491,20 +491,20 @@ class Contract(models.Model):
         name="hr_cae_contract.report_hr_cae_contract_blank",
         string="Blank Contract",
     ):
+        now_str = fields.Datetime.to_string(fields.Datetime.now())
+        document_name = "'{}'".format(self.get_document_name())
+        action_name = "%s-%s" % (self.name, now_str)
         return (
             self.env["ir.actions.report"]
             .create(
                 {
                     "model": "hr.contract",
-                    "attachment": "'{}'".format(self.get_document_name()),
-                    "print_report_name": "'{}'".format(
-                        self.get_document_name()
-                    ),
-                    "name": name,
-                    "file": name,
+                    "attachment": document_name,
+                    "print_report_name": document_name,
+                    "name": action_name,
                     "report_name": name,
                     "report_type": "qweb-pdf",
-                    "string": string,
+                    "string": string,  # à quoi sert String?
                 }
             )
             .report_action(self)

@@ -450,25 +450,8 @@ class Contract(models.Model):
     @api.multi
     def create_document(self):
         self.ensure_one()
-        # self.check_existing_document()
         self.check_required_fields()
         return self.create_report_action()
-
-    def check_existing_document(self):
-        attachment_ids = self.env["ir.attachment"].search(
-            [("res_model", "=", "hr.contract"), ("res_id", "in", self.ids)]
-        )
-        document_name = self.get_document_name()
-        if document_name in attachment_ids.mapped("name"):
-            raise ValidationError(
-                _(
-                    "A contract document with the name %s already exists."
-                    % document_name
-                )
-            )
-
-    def get_document_name(self):
-        return "CONTR_" + (self.name or "").replace("/", "_").replace(" ", "_")
 
     def check_required_fields(self, required_fields=None):
         # takes a list of field names required before printing the document
@@ -487,13 +470,17 @@ class Contract(models.Model):
         return reduce(lambda d, key: d[key], nested_field.split("."), self)
 
     def create_report_action(
-        self,
-        name="hr_cae_contract.report_hr_cae_contract_blank",
-        string="Blank Contract",
+        self, report_name="hr_cae_contract.report_hr_cae_contract_blank"
     ):
         now_str = fields.Datetime.to_string(fields.Datetime.now())
-        document_name = "'{}'".format(self.get_document_name())
-        action_name = "%s-%s" % (self.name, now_str)
+        name = (
+            ("CONTR_{}_{}".format(self.name or "", now_str))
+            .replace("/", "_")
+            .replace(" ", "_")
+            .replace("-", "_")
+            .replace(":", "_")
+        )
+        document_name = "'{}'".format(name)
         return (
             self.env["ir.actions.report"]
             .create(
@@ -501,11 +488,17 @@ class Contract(models.Model):
                     "model": "hr.contract",
                     "attachment": document_name,
                     "print_report_name": document_name,
-                    "name": action_name,
-                    "report_name": name,
+                    "name": name,
+                    "report_name": report_name,
                     "report_type": "qweb-pdf",
-                    "string": string,  # à quoi sert String?
+                    "temporary_action": True,
                 }
             )
             .report_action(self)
         )
+
+    def cron_remove_temporary_report_actions(self):
+        temporary_report_actions = self.env["ir.actions.report"].search(
+            [("temporary_action", "=", True)]
+        )
+        temporary_report_actions.unlink()

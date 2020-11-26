@@ -15,6 +15,7 @@
     "data": [
         "security/ir.model.access.csv",
         "security/hr_security.xml",
+        "data/cron.xml",
         "data/hr_contract_data.xml",
         "wizard/create_amendment_wizard.xml",
         "report/hr_contract.xml",

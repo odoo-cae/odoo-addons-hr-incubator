@@ -13,10 +13,13 @@
                 <t t-set="partner_address"
                    t-value="doc.employee_id.address_home_id"/>
             </t>
+            <head>
+                    <link href="/coopaname_custom_contract/static/src/css/coopaname_custom_contact.css" rel="stylesheet"/>
+            </head>
             <h1>
                 CONTRAT DE TRAVAIL A DURÉE INDÉTERMINÉE
             </h1>
-            <p>
+            <p class="some_class">
                 Entre les soussignés :
             </p>
             <p>

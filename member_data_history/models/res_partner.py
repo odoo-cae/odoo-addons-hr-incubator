@@ -20,4 +20,4 @@ class ResPartner(models.Model):
                     "new_value": str(vals.get("zip")),
                 }
             )
-        return super(ResPartner, self).write(vals)
+        return super().write(vals)

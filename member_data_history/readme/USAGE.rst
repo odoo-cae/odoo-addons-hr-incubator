@@ -41,6 +41,6 @@ To log a value change, overload `write` like this
                         "new_value": str(vals.get("zip")),
                     }
                 )
-            return super(ResPartner, self).write(vals)
+            return super().write(vals)
 
 If you need to log a value on creation, overwrite `create(vals)`.

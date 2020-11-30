@@ -45,4 +45,4 @@ class HRContract(models.Model):
                     "new_value": vals.get("date_end"),
                 }
             )
-        return super(HRContract, self).write(vals)
+        return super().write(vals)

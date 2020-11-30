@@ -52,7 +52,7 @@ class Employee(models.Model):
                     "new_value": partner.zip,
                 }
             )
-        return super(Employee, self).write(vals)
+        return super().write(vals)
 
     @api.depends("address_home_id.zip")
     def _compute_trigger(self):

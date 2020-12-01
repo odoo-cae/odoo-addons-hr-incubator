@@ -159,5 +159,5 @@ class Contract(models.Model):
                 _("No template defined for this type of contract (and tag).")
             )
 
-        self.check_required_fields(self._get_required_fields(report_name))
+        # self.check_required_fields(self._get_required_fields(report_name))
         return self.create_report_action(report_name)

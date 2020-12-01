@@ -14,7 +14,8 @@
                    t-value="doc.employee_id.address_home_id"/>
             </t>
             <head>
-                    <link href="/coopaname_custom_contract/static/src/css/coopaname_custom_contact.css" rel="stylesheet"/>
+                <link href="/coopaname_custom_contract/static/src/css/coopaname_custom_contact.css"
+                      rel="stylesheet"/>
             </head>
             <h1>
                 CONTRAT DE TRAVAIL A DURÉE INDÉTERMINÉE
@@ -61,10 +62,10 @@
                 <span t-field="doc.employee_id.ssnid"/>,
                 de nationalité
                 <t t-if="doc.employee_id.country_id.name == 'France'"/>
-                    française
+                française
                 <t/>
                 <t t-if="doc.employee_id.country_id.name != 'France'"/>
-                    <span t-field="doc.employee_id.country_id.name"/>
+                <span t-field="doc.employee_id.country_id.name"/>
                 <t/>
                 ci-après dénommé « l’entrepreneur–salarié »,
             </p>
@@ -259,7 +260,8 @@
                             les moyens logistiques suivants : tenue de
                             comptabilité, facturation (le suivi des
                             encaissements des clients étant du fait de
-                            <span t-class="employee_name" t-esc="partner_title_name"/>),
+                            <span t-class="employee_name"
+                                  t-esc="partner_title_name"/>),
                             règlement des factures fournisseurs (lorsque
                             l’accord préalable a été acquis), remboursement des
                             frais de déplacements afférents à un chantier ou une
@@ -362,6 +364,10 @@
                     <span t-field="doc.company_id.name"/>
                     <br/>
                     <span t-field="doc.company_id.co_ceo.name"/>.
+                    <img t-if="doc.company_id.signature_scan"
+                         t-attf-class="mt16 w-50"
+                         t-attf-style="{{ 'min-width: 100px; max-width: 250px' if report_type == 'pdf' else '' }}"
+                         t-att-src="'data:image/png;base64,%s' % doc.company_id.signature_scan.decode()"/>
                 </p>
                 <p>
                     L’entrepreneur salarié

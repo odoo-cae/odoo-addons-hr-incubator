@@ -92,7 +92,7 @@ msgid "CAPE"
 msgstr ""
 
 #. module: hr_cae_contract
-#: model:hr.contract.type,name:hr_cae_contract.hr_contract_cape_remuneration
+#: model:hr.contract.type,name:hr_cae_contract.hr_contract_type_cape_remuneration
 msgid "CAPE Remuneration"
 msgstr "Rémunération du CAPE"
 

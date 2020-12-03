@@ -1,4 +1,5 @@
 import logging
+from functools import reduce
 
 from dateutil.relativedelta import relativedelta
 
@@ -445,3 +446,59 @@ class Contract(models.Model):
             "target": "current",
             "context": {"form_view_initial_mode": "edit"},
         }
+
+    @api.multi
+    def create_document(self):
+        self.ensure_one()
+        self.check_required_fields()
+        return self.create_report_action()
+
+    def check_required_fields(self, required_fields=None):
+        # takes a list of field names required before printing the document
+        if required_fields:
+            missing_fields = ", ".join(
+                [
+                    field
+                    for field in required_fields
+                    if not self.get_field_value_deep(field)
+                ]
+            )
+            if missing_fields:
+                raise ValidationError(_("Missing fields: %s" % missing_fields))
+
+    def get_field_value_deep(self, nested_field):
+        return reduce(lambda d, key: d[key], nested_field.split("."), self)
+
+    def create_report_action(
+        self, report_name="hr_cae_contract.report_hr_cae_contract_blank"
+    ):
+        now_str = fields.Datetime.to_string(fields.Datetime.now())
+        name = (
+            ("CONTR_{}_{}".format(self.name or "", now_str))
+            .replace("/", "_")
+            .replace(" ", "_")
+            .replace("-", "_")
+            .replace(":", "_")
+        )
+        document_name = "'{}'".format(name)
+        return (
+            self.env["ir.actions.report"]
+            .create(
+                {
+                    "model": "hr.contract",
+                    "attachment": document_name,
+                    "print_report_name": document_name,
+                    "name": name,
+                    "report_name": report_name,
+                    "report_type": "qweb-pdf",
+                    "temporary_action": True,
+                }
+            )
+            .report_action(self)
+        )
+
+    def cron_remove_temporary_report_actions(self):
+        temporary_report_actions = self.env["ir.actions.report"].search(
+            [("temporary_action", "=", True)]
+        )
+        temporary_report_actions.unlink()

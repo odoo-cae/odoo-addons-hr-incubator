@@ -7,3 +7,4 @@ Manage employee contracts in a CAE.
 * Fields are added to contracts regarding duration and dates (signature, mailing, ...).
 * The monthly wage is computed based on monthly working hours and hourly wage.
 * Contract attachements can be uploaded
+* Contracts have report documents that can serve as legal contract documents.

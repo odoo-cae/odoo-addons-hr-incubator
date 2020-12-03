@@ -11,3 +11,4 @@ class ResCompany(models.Model):
     co_ceo = fields.Many2one(
         comodel_name="res.partner", string="Co-CEO", required=False
     )
+    signature_scan = fields.Binary(string="Co-CEO signature")

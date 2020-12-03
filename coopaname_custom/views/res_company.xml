@@ -11,6 +11,7 @@
         <field name="arch" type="xml">
             <field name="partner_id" position="after">
                 <field name="co_ceo"/>
+                <field name="signature_scan"/>
             </field>
         </field>
     </record>

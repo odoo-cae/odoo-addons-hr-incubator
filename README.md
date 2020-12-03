@@ -15,6 +15,7 @@ Available addons
 addon | version | summary
 --- | --- | ---
 [coopaname_custom](coopaname_custom/) | 12.0.0.3.0 | Customization specific to Coopaname use case.
+[coopaname_custom_contract](coopaname_custom_contract/) | 12.0.1.0.0 | Customization of Contracts specific to Coopaname use case.
 [hr_cae](hr_cae/) | 12.0.1.4.0 | Manage employee HR in a CAE.
 [hr_cae_contract](hr_cae_contract/) | 12.0.1.4.0 | Manage employee contracts in a CAE.
 [hr_cae_contribution](hr_cae_contribution/) | 12.0.1.2.0 | Manage employee contributions and exeptions in a CAE.

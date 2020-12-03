@@ -48,7 +48,6 @@ Add a report
 - add the report case to :code:`create_document` function in :code:`hr_contract.py`
 - add the required fields for this report to :code:`required_fields.py`
 
-
 Bug Tracker
 ===========
 

@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/odoo-cae/odoo-addons-hr-incubator.svg?branch=12.0)](https://travis-ci.org/odoo-cae/odoo-addons-hr-incubator?branch=12.0)
+[![Build Status](https://travis-ci.com/odoo-cae/odoo-addons-hr-incubator.svg?branch=12.0)](https://travis-ci.com/odoo-cae/odoo-addons-hr-incubator?branch=12.0)
 [![Coverage Status](https://coveralls.io/repos/github/odoo-cae/odoo-addons-hr-incubator/badge.svg?branch=12.0)](https://coveralls.io/github/odoo-cae/odoo-addons-hr-incubator?branch=12.0)
 [![Code Climate](https://codeclimate.com/github/odoo-cae/odoo-addons-hr-incubator/badges/gpa.svg)](https://codeclimate.com/github/odoo-cae/odoo-addons-hr-incubator)
 
